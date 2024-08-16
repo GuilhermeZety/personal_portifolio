@@ -26,17 +26,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     var width = context.width;
+    double margin = (width - contentMaxWidth) < 24 ? 24 : (width - contentMaxWidth) / 2;
     return SliverAppBar(
       backgroundColor: AppColors.blue_800,
       title: const Text(
         'Guilherme Martins',
         style: TextStyle(fontSize: 16, letterSpacing: 0.4),
-      ).gradient(AppColors.gradient).pLeft((width - contentMaxWidth) / 2),
+      ).gradient(AppColors.gradient).pLeft(margin),
       pinned: true,
       actions: [
         const Text('111'),
         const Text('222'),
-        const Text('333').pRight((width - contentMaxWidth) / 2),
+        const Text('333').pRight(margin),
       ],
     );
   }

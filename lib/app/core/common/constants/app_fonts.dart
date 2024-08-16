@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppFonts {
-  static String defaultFont = 'RobotoCondensed';
+  static String defaultFont = 'Segoe UI';
 
   static const FontWeight normal = FontWeight.w400;
   static const FontWeight medium = FontWeight.w500;
