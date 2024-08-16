@@ -30,6 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     var width = context.width;
     double margin = (width - contentMaxWidth) < 24 ? 24 : (width - contentMaxWidth) / 2;
+
     return SliverAppBar(
       backgroundColor: context.colorScheme.secondaryContainer,
       title: const Text(

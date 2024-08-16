@@ -1,7 +1,9 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:personal_portifolio/app/core/common/constants/app_assets.dart';
 import 'package:personal_portifolio/app/core/shared/location_session.dart';
+import 'package:personal_portifolio/app/core/shared/session_memory.dart';
 import 'package:signals/signals_flutter.dart';
 
 class LanguageSwitch extends StatefulWidget {
@@ -21,7 +23,7 @@ class _LanguageSwitchState extends State<LanguageSwitch> with SignalsAutoDispose
       icon: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(
+          SvgPicture.memory(
             languageSvg(LocalizationSession().locale.watch(context).languageCode),
             width: 30,
           ),
@@ -31,12 +33,12 @@ class _LanguageSwitchState extends State<LanguageSwitch> with SignalsAutoDispose
     );
   }
 
-  String languageSvg(String value) {
+  Uint8List languageSvg(String value) {
     return switch (value) {
-      'pt' => AppAssets.svgs.brazil,
-      'en' => AppAssets.svgs.unitedStates,
-      'es' => AppAssets.svgs.spain,
-      _ => AppAssets.svgs.unitedStates,
+      'pt' => SessionMemory().brazilSVG,
+      'en' => SessionMemory().unitedStatesSVG,
+      'es' => SessionMemory().spainSVG,
+      _ => SessionMemory().brazilSVG,
     };
   }
 }

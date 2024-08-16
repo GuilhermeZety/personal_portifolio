@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -19,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     LocalizationSession().locale.listen(context, () async {
       Future.delayed(50.ms, () {
         if (mounted) setState(() {});
+        log('stt home');
       });
     });
     super.initState();
