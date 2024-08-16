@@ -1,21 +1,20 @@
-import 'dart:io';
 import 'dart:ui';
 
+import 'package:personal_portifolio/app/core/shared/current_session.dart';
 import 'package:signals/signals.dart';
 import 'package:signals/signals_flutter.dart';
 
-class LocalizatiionSession {
+class LocalizationSession {
   //SingleTon
-  LocalizatiionSession._();
-  static final LocalizatiionSession _instance = LocalizatiionSession._();
-  factory LocalizatiionSession() => LocalizatiionSession._instance;
+  LocalizationSession._();
+  static final LocalizationSession _instance = LocalizationSession._();
+  factory LocalizationSession() => LocalizationSession._instance;
   //
 
   late Signal<Locale> locale;
 
   void init() {
-    // locale = Locale(session.prefs.getString('localization') ?? Platform.localeName.split('_')[0]).toSignal();
-    locale = Locale(Platform.localeName.split('_')[0]).toSignal();
+    locale = Locale(CurrentSession().prefs.getString('localization') ?? window.locale.languageCode).toSignal();
   }
 
   final List<(String, String)> suportedLocales = [
@@ -36,6 +35,6 @@ class LocalizatiionSession {
         locale.value = const Locale('pt', 'BR');
         break;
     }
-    // session.prefs.setString('localization', locale.value.languageCode.substring(0, 2));
+    CurrentSession().prefs.setString('localization', locale.value.languageCode.substring(0, 2));
   }
 }

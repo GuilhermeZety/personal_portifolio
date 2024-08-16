@@ -35,6 +35,7 @@ extension GetTheme on BuildContext {
 
   /// Returns same as MediaQuery.of(context)
   MediaQueryData get mq => MediaQuery.of(this);
+  MediaQueryData? get mMq => MediaQuery.maybeOf(this);
 
   double safeArea(AxisDirection direction) {
     var pd = MediaQuery.paddingOf(this);

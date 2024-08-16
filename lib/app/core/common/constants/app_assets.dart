@@ -11,7 +11,10 @@ class AppImages {
 }
 
 class AppSvgs {
-  static const String _path = 'assets/svgs';
+  static const String _path = 'svgs/';
+  final String brazil = '${_path}brazil.svg';
+  final String spain = '${_path}spain.svg';
+  final String unitedStates = '${_path}united-states.svg';
 }
 
 class AppGifs {

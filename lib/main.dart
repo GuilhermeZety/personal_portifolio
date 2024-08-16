@@ -6,8 +6,8 @@ import 'package:url_strategy/url_strategy.dart';
 double contentMaxWidth = 1200;
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
+  WidgetsFlutterBinding.ensureInitialized();
   CurrentSession().init();
   runApp(
     const AppWidget(),

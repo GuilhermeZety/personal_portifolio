@@ -1,3 +1,5 @@
+import 'package:personal_portifolio/app/core/common/constants/app_theme.dart';
+import 'package:personal_portifolio/app/core/shared/location_session.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CurrentSession {
@@ -11,5 +13,7 @@ class CurrentSession {
 
   void init() async {
     await SharedPreferences.getInstance().then((pref) => prefs = pref);
+    LocalizationSession().init();
+    AppTheme().init();
   }
 }

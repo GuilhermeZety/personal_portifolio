@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0+1
 
 environment:
-  sdk: ^3.5.0
+  sdk: '>=3.4.4 <4.0.0'
 
 dependencies:
   flutter:
@@ -24,6 +24,7 @@ dependencies:
   flutter_native_splash: ^2.4.1
   gif: ^2.3.0
   url_strategy: ^0.3.0
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -36,12 +37,12 @@ flutter_native_splash:
   ios: false
   web: true
   
-  color: "#27272A"
+  color: "#121414"
 
   image: assets/native_splash.png
 
   android_12:
-    color: "#27272A"
+    color: "#121414"
     image: assets/native_splash.png
 
 flutter_launcher_icons:
