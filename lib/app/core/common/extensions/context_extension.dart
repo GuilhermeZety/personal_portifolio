@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:personal_portifolio/app/core/common/enums/layout_type.dart';
+import 'package:personal_portifolio/main.dart';
 
 extension GetTheme on BuildContext {
   Size get _size => MediaQuery.sizeOf(this);
@@ -87,6 +88,8 @@ extension GetTheme on BuildContext {
   double heightPct(double fraction) => fraction * height;
 
   bool get isDark => colorScheme.brightness == Brightness.dark;
+
+  double get pageMargin => (width - contentMaxWidth) < 24 ? 24 : (width - contentMaxWidth) / 2;
 }
 
 extension KeyboardExtension on BuildContext {

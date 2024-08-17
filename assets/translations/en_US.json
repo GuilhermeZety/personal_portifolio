@@ -1,4 +1,6 @@
 {
-    "access": "accesss",
-    "developed_by": "Developed and maintained by"
+    "hello": "Hello, I'm",
+    "developer": "Mobile Developer",
+    "home": "Home",
+    "about_me": "About Me"
 }

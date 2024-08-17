@@ -11,17 +11,25 @@ class SessionMemory {
   //
 
   Future load() async {
-    var [brazil, unitedStates, spain] = await Future.wait([
+    var [
+      brazil,
+      unitedStates,
+      spain,
+      mouse,
+    ] = await Future.wait([
       Utils.getAssetsBytes(AppAssets.svgs.brazil),
       Utils.getAssetsBytes(AppAssets.svgs.unitedStates),
       Utils.getAssetsBytes(AppAssets.svgs.spain),
+      Utils.getAssetsBytes(AppAssets.svgs.mouse),
     ]);
     brazilSVG = brazil;
     unitedStatesSVG = unitedStates;
     spainSVG = spain;
+    mouseSVG = mouse;
   }
 
   late Uint8List brazilSVG;
   late Uint8List unitedStatesSVG;
   late Uint8List spainSVG;
+  late Uint8List mouseSVG;
 }

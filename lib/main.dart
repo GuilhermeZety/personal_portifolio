@@ -13,3 +13,5 @@ void main() async {
     const AppWidget(),
   );
 }
+
+bool mainAnimation = true;

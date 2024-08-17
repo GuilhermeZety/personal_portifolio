@@ -1,4 +1,6 @@
 {
-    "access": "acessar",
-    "developed_by": "Desenvolvido e mantido por"
+    "hello": "Olá, sou o",
+    "developer": "Desenvolvedor Mobile",
+    "home": "Inicio",
+    "about_me": "Acerca de mí"
 }

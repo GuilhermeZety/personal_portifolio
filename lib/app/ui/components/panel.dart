@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
-import 'package:personal_portifolio/app/ui/components/shimed_box.dart';
+import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 
 class Panel extends StatelessWidget {
   final EdgeInsets padding;
@@ -36,19 +36,12 @@ class Panel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isLoading) {
-      return ShimmedBox(
-        width: width ?? double.infinity,
-        height: height ?? double.infinity,
-      );
-    }
-
     return Container(
-      width: width ?? double.infinity,
+      width: width,
       height: height,
       decoration: BoxDecoration(
         border: border,
-        borderRadius: radius ?? BorderRadius.circular(0),
+        borderRadius: radius ?? BorderRadius.circular(10),
         boxShadow: withShadow
             ? [
                 BoxShadow(
@@ -61,8 +54,8 @@ class Panel extends StatelessWidget {
             : [],
       ),
       child: Material(
-        color: color ?? AppColors.white,
-        borderRadius: radius ?? BorderRadius.circular(0),
+        color: color ?? context.colorScheme.secondaryContainer,
+        borderRadius: radius ?? BorderRadius.circular(10),
         child: InkWell(
           onTap: onTap,
           enableFeedback: true,

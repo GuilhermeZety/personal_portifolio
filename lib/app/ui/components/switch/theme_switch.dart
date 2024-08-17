@@ -2,7 +2,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_theme.dart';
-import 'package:personal_portifolio/app/core/common/extensions/widget/widget_extension.dart';
+import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:signals/signals_flutter.dart';
 
 class ThemeSwitch extends StatefulWidget {
@@ -45,29 +45,20 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
           );
           await AppTheme().changeThemeMode(newTheme);
         },
-        icon: AnimatedContainer(
-          duration: const Duration(milliseconds: 500),
+        icon: Container(
           alignment: Alignment.center,
           height: height,
           width: width,
           decoration: BoxDecoration(
-            color: themeMode == ThemeMode.light ? Colors.white : AppColors.blue_600,
+            color: context.colorScheme.surface,
             borderRadius: BorderRadius.circular(100),
-            boxShadow: [
-              BoxShadow(
-                color: themeMode == ThemeMode.light ? Colors.black.withOpacity(0.1) : Colors.black.withOpacity(0.0),
-                spreadRadius: 2,
-                blurRadius: 7,
-                offset: const Offset(0, 3),
-              ),
-            ],
           ),
           child: Row(
             children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
+              Container(
                 width: (width / 2) - 4,
                 height: (width / 2) - 4,
+                margin: EdgeInsets.only(left: themeMode == ThemeMode.dark ? 2 : width / 2),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -87,7 +78,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
                   color: AppColors.white,
                   size: (height - 10),
                 ),
-              ).pLeft(themeMode == ThemeMode.dark ? 2 : width / 2),
+              ),
             ],
           ),
         ),

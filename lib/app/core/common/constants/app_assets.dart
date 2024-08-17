@@ -15,6 +15,7 @@ class AppSvgs {
   final String brazil = '${_path}brazil.svg';
   final String spain = '${_path}spain.svg';
   final String unitedStates = '${_path}united-states.svg';
+  final String mouse = '${_path}mouse.svg';
 }
 
 class AppGifs {

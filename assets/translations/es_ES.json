@@ -1,4 +1,6 @@
 {
-    "access": "acceso",
-    "developed_by": "Desarrollado y mantenido por"
+    "hello": "Hola, soy",
+    "developer": "Desarrollador Móvil",
+    "home": "Inicio",
+    "about_me": "Sobre Mim"
 }  
