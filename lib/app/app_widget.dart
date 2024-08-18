@@ -1,4 +1,5 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:localization/localization.dart';
@@ -22,7 +23,11 @@ class _AppWidgetState extends State<AppWidget> {
 
   @override
   Widget build(BuildContext context) {
-    LocalJsonLocalization.delegate.directories = ['translations'];
+    String translationsPath = 'translations';
+    if (!kDebugMode) {
+      translationsPath = 'assets/$translationsPath';
+    }
+    LocalJsonLocalization.delegate.directories = [translationsPath];
 
     return ThemeProvider(
       initTheme: AppTheme().themeMode.value == ThemeMode.dark ? AppTheme.dark : AppTheme.light,

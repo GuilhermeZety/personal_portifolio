@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,18 +36,16 @@ class _ApresentationSectionState extends State<ApresentationSection> {
         child: Stack(
           children: [
             Center(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: OverflowBar(
+                overflowDirection: VerticalDirection.up,
+                alignment: MainAxisAlignment.spaceBetween,
+                overflowAlignment: OverflowBarAlignment.center,
+                overflowSpacing: 24,
                 children: [
                   _buildApresentation(),
-                  Image.asset(
-                    AppAssets.gifs.spinningCat,
-                    width: 300,
-                    height: 300,
-                  ).hero('spinningCat'),
+                  _getSpinningCat,
                 ],
-              ).pH(context.pageMargin),
+              ).pH(context.pageMargin).pBottom(32),
             ),
             Positioned(
               bottom: 24,
@@ -60,9 +59,9 @@ class _ApresentationSectionState extends State<ApresentationSection> {
                   icon: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      slideAnimation(SvgPicture.memory(SessionMemory().mouseSVG, height: 18)),
-                      const Text('Continuar').pH(16).pBottom(3),
-                      slideAnimation(SvgPicture.memory(SessionMemory().mouseSVG, height: 18)),
+                      gesture(),
+                      Text('continue'.t).pH(16).pBottom(3),
+                      gesture(),
                     ],
                   ).pH(16),
                 ),
@@ -74,8 +73,27 @@ class _ApresentationSectionState extends State<ApresentationSection> {
     );
   }
 
-  Widget slideAnimation(Widget child) {
-    return child
+  Widget get _getSpinningCat => Image.asset(
+        AppAssets.gifs.spinningCat,
+        width: context.width < 696 ? 250 : 300,
+        height: context.width < 696 ? 250 : 300,
+      ).hero('spinningCat');
+
+  Widget gesture() {
+    return (context.isDesktop
+            ? SvgPicture.memory(
+                SessionMemory().mouseSVG,
+                height: 18,
+                colorFilter: const ColorFilter.mode(AppColors.blue_700, BlendMode.srcIn),
+              )
+            : Container(
+                decoration: BoxDecoration(
+                  color: context.colorScheme.tertiaryContainer.withOpacity(0.6),
+                  shape: BoxShape.circle,
+                ),
+                width: 20,
+                height: 20,
+              ))
         .animate(
           onComplete: (controller) => controller.repeat(reverse: true),
         )
@@ -89,7 +107,7 @@ class _ApresentationSectionState extends State<ApresentationSection> {
   Widget _buildApresentation() {
     return SelectionArea(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: context.width < 746 ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
@@ -101,13 +119,15 @@ class _ApresentationSectionState extends State<ApresentationSection> {
             ),
           ),
           const AnimatedName(),
-          Text(
+          AutoSizeText(
             'developer'.t,
             style: TextStyle(
               fontSize: 36,
               fontWeight: AppFonts.normal,
               color: context.textTheme.displaySmall?.color,
             ),
+            maxLines: 2,
+            textAlign: TextAlign.center,
           ),
         ],
       ).shim(),
@@ -155,14 +175,18 @@ class _AnimatedNameState extends State<AnimatedName> {
   Widget build(BuildContext context) {
     return Watch(
       (context) => Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            name.substring(0, show.value),
-            style: TextStyle(
-              fontSize: fontSize,
-              fontWeight: AppFonts.bold,
-            ),
-          ).gradient(AppColors.gradient),
+          Flexible(
+            child: AutoSizeText(
+              name.substring(0, show.value),
+              style: TextStyle(
+                fontSize: fontSize,
+                fontWeight: AppFonts.bold,
+              ),
+              maxLines: 1,
+            ).gradient(AppColors.gradient),
+          ),
           AnimatedDefaultTextStyle(
             duration: 100.ms,
             style: TextStyle(

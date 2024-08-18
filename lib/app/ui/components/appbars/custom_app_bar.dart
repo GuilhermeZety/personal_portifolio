@@ -10,6 +10,8 @@ import 'package:personal_portifolio/app/core/common/extensions/widget/widget_ext
 import 'package:personal_portifolio/app/core/common/utils/scroll_util.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/about_me_section.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/apresentation_section.dart';
+import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/contact_section.dart';
+import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/projects_section.dart';
 import 'package:personal_portifolio/app/ui/components/switch/language_switch.dart';
 import 'package:personal_portifolio/app/ui/components/switch/theme_switch.dart';
 import 'package:personal_portifolio/main.dart';
@@ -46,15 +48,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
     return SliverAppBar(
       backgroundColor: context.colorScheme.primaryContainer,
       surfaceTintColor: context.colorScheme.primaryContainer,
+      automaticallyImplyLeading: false,
       title: GestureDetector(
         onTap: () async {
           await ScrollUtil.to(ApresentationSection.currentKey.currentContext!);
         },
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
-          child: const Text(
+          child: Text(
             'Guilherme Martins',
-            style: TextStyle(fontSize: 18, letterSpacing: 0.3),
+            style: TextStyle(fontSize: context.isMobile ? 14 : 18, letterSpacing: 0.3),
           ).gradient(AppColors.gradient).pLeft(context.pageMargin).slideFade(
                 false,
                 delay: 200.ms,
@@ -72,28 +75,52 @@ class _CustomAppBarState extends State<CustomAppBar> {
       centerTitle: false,
       pinned: true,
       actions: [
-        AppBarItem(
-          title: 'home'.t,
-          currentKey: ApresentationSection.currentKey,
-          animationDelay: 400.ms,
-        ),
-        const Gap(8),
-        AppBarItem(
-          title: 'about_me'.t,
-          currentKey: AboutMeSection.currentKey,
-          animationDelay: 400.ms,
-        ),
+        if (context.isDesktop) ...[
+          AppBarItem(
+            title: 'home'.t,
+            currentKey: ApresentationSection.currentKey,
+            animationDelay: 400.ms,
+          ),
+          const Gap(8),
+          AppBarItem(
+            title: 'about_me'.t,
+            currentKey: AboutMeSection.currentKey,
+            animationDelay: 400.ms,
+          ),
+          const Gap(8),
+          AppBarItem(
+            title: 'projects'.t,
+            currentKey: ProjectsSection.currentKey,
+            animationDelay: 400.ms,
+          ),
+          const Gap(8),
+          AppBarItem(
+            title: 'contact'.t,
+            currentKey: ContactSection.currentKey,
+            animationDelay: 400.ms,
+          ),
+        ],
         const Gap(8),
         const ThemeSwitch().slideFade(false, delay: 500.ms, active: mainAnimation),
-        const Gap(16),
+        const Gap(8),
         SizedBox(
-          width: 100,
+          width: 64,
           child: Row(
             children: [
               const LanguageSwitch().slideFade(false, delay: 500.ms, active: mainAnimation),
             ],
           ),
-        ).pRight(context.pageMargin),
+        ),
+        if (!context.isDesktop)
+          IconButton(
+            onPressed: () {
+              Scaffold.of(context).openEndDrawer();
+            },
+            icon: const Icon(
+              Icons.menu_rounded,
+            ),
+          ),
+        Gap(context.pageMargin),
       ],
     );
   }

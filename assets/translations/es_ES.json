@@ -2,5 +2,8 @@
     "hello": "Hola, soy",
     "developer": "Desarrollador Móvil",
     "home": "Inicio",
-    "about_me": "Sobre Mim"
+    "about_me": "Acerca de mí",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "continue": "Continuar"
 }  

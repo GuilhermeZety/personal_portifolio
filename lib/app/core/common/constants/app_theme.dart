@@ -50,14 +50,14 @@ class AppTheme {
         bottomSheetTheme: const BottomSheetThemeData(
           backgroundColor: Colors.transparent,
         ),
-        scaffoldBackgroundColor: AppColors.grey_100,
+        scaffoldBackgroundColor: AppColors.white,
         canvasColor: AppColors.white,
         primaryColor: AppColors.primary,
         colorScheme: const ColorScheme.light().copyWith(
           primary: AppColors.primary,
-          primaryContainer: AppColors.grey_100,
+          primaryContainer: AppColors.white,
           secondary: AppColors.secondary,
-          secondaryContainer: AppColors.white,
+          secondaryContainer: AppColors.grey_50,
           tertiary: AppColors.tertiary,
           tertiaryContainer: AppColors.grey_200,
           surface: AppColors.white,
@@ -132,6 +132,10 @@ class AppTheme {
           displaySmall: TextStyle(color: AppColors.grey_300, letterSpacing: 0.3),
           bodyMedium: TextStyle(color: AppColors.grey_200, letterSpacing: 0.3),
           bodySmall: TextStyle(color: AppColors.grey_300, letterSpacing: 0.3),
+        ),
+        drawerTheme: const DrawerThemeData(
+          elevation: 2,
+          backgroundColor: AppColors.grey_900,
         ),
         iconTheme: const IconThemeData(
           color: AppColors.grey_200,

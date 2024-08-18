@@ -26,6 +26,7 @@ dependencies:
   url_strategy: ^0.3.0
   flutter_svg: ^2.0.10+1
   animated_text_kit: ^4.2.2
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +59,9 @@ flutter:
   assets:
     - assets/
     - assets/fonts/
+    - assets/gifs/
+    - assets/svgs/
+    - assets/translations/
 
   fonts:
     - family: Segoe UI

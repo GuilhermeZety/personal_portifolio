@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension Gradient on Text {
+extension Gradient on Widget {
   Widget gradient(LinearGradient gradient) {
     return GradientText(this, gradient: gradient);
   }
@@ -8,12 +8,12 @@ extension Gradient on Text {
 
 class GradientText extends StatelessWidget {
   const GradientText(
-    this.text, {
+    this.child, {
     super.key,
     required this.gradient,
   });
 
-  final Text text;
+  final Widget child;
   final LinearGradient gradient;
 
   @override
@@ -23,7 +23,7 @@ class GradientText extends StatelessWidget {
       shaderCallback: (bounds) => gradient.createShader(
         Rect.fromLTWH(0, 0, bounds.width, bounds.height),
       ),
-      child: text,
+      child: child,
     );
   }
 }

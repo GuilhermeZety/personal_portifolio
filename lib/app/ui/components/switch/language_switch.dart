@@ -20,15 +20,9 @@ class _LanguageSwitchState extends State<LanguageSwitch> with SignalsAutoDispose
       onPressed: () async {
         LocalizationSession().switchLocale();
       },
-      icon: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.memory(
-            languageSvg(LocalizationSession().locale.watch(context).languageCode),
-            height: 24,
-          ),
-          const Icon(Icons.keyboard_arrow_down_rounded),
-        ],
+      icon: SvgPicture.memory(
+        languageSvg(LocalizationSession().locale.watch(context).languageCode),
+        height: 24,
       ),
     );
   }

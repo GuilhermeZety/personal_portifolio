@@ -18,6 +18,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
       child: Column(
         children: [
           const Gap(60),
+          //TODO: Colocar numeros aqui :)
           Container(
             width: 100,
             height: 200,
