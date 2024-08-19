@@ -14,7 +14,7 @@ class LocalizationSession {
   late Signal<Locale> locale;
 
   void init() {
-    locale = Locale(CurrentSession().prefs.getString('localization') ?? window.locale.languageCode).toSignal();
+    locale = Locale(CurrentSession().prefs.getString('localization') ?? PlatformDispatcher.instance.locale.languageCode).toSignal();
   }
 
   final List<(String, String)> suportedLocales = [

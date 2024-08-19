@@ -11,6 +11,8 @@ class AboutMeSection extends StatefulWidget {
 }
 
 class _AboutMeSectionState extends State<AboutMeSection> {
+  final int developedProjects = 12;
+
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
