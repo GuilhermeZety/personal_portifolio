@@ -12,7 +12,7 @@ class AppTheme {
   factory AppTheme() => AppTheme._instance;
   //
 
-  final Signal<ThemeMode> themeMode = ThemeMode.dark.toSignal();
+  final Signal<ThemeMode> themeMode = ThemeMode.dark.asSignal(debugLabel: 'THEME_MODE');
 
   void init() {
     var value = CurrentSession().prefs.getBool('theme');

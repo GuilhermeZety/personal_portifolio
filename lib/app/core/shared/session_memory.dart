@@ -16,20 +16,24 @@ class SessionMemory {
       unitedStates,
       spain,
       mouse,
+      particle,
     ] = await Future.wait([
       Utils.getAssetsBytes(AppAssets.svgs.brazil),
       Utils.getAssetsBytes(AppAssets.svgs.unitedStates),
       Utils.getAssetsBytes(AppAssets.svgs.spain),
       Utils.getAssetsBytes(AppAssets.svgs.mouse),
+      Utils.getAssetsBytes(AppAssets.images.particle),
     ]);
     brazilSVG = brazil;
     unitedStatesSVG = unitedStates;
     spainSVG = spain;
     mouseSVG = mouse;
+    particleIMG = particle;
   }
 
   late Uint8List brazilSVG;
   late Uint8List unitedStatesSVG;
   late Uint8List spainSVG;
   late Uint8List mouseSVG;
+  late Uint8List particleIMG;
 }

@@ -9,7 +9,8 @@ class AppAssets {
 }
 
 class AppImages {
-  // static String get _path => !kDebugMode ? 'assets/images' : 'images';
+  static String get _path => !kDebugMode ? 'assets/images' : 'images';
+  final String particle = '$_path/particle.png';
 }
 
 class AppSvgs {

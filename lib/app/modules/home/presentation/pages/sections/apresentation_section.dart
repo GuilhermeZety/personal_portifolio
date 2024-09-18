@@ -14,6 +14,7 @@ import 'package:personal_portifolio/app/core/common/extensions/widget/widget_ext
 import 'package:personal_portifolio/app/core/common/utils/scroll_util.dart';
 import 'package:personal_portifolio/app/core/shared/session_memory.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/about_me_section.dart';
+import 'package:personal_portifolio/app/ui/components/background_particles.dart';
 import 'package:signals/signals_flutter.dart';
 
 class ApresentationSection extends StatefulWidget {
@@ -35,6 +36,7 @@ class _ApresentationSectionState extends State<ApresentationSection> {
         color: context.colorScheme.secondaryContainer,
         child: Stack(
           children: [
+            const Positioned.fill(child: BackgroundParticles()),
             Center(
               child: OverflowBar(
                 overflowDirection: VerticalDirection.up,
@@ -145,8 +147,8 @@ class AnimatedName extends StatefulWidget {
 class _AnimatedNameState extends State<AnimatedName> {
   double fontSize = 42;
   final String name = 'Guilherme Martins.';
-  final show = 0.toSignal();
-  final showBar = true.toSignal();
+  final show = 0.asSignal(debugLabel: 'SHOW_NAME_LENGH');
+  final showBar = true.asSignal(debugLabel: 'SHOW_NAME_BOOL');
 
   late Timer timer;
 

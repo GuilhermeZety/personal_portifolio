@@ -135,22 +135,21 @@ class AppBarItem extends StatefulWidget {
   State<AppBarItem> createState() => _AppBarItemState();
 }
 
-class _AppBarItemState extends State<AppBarItem> {
-  final hooved = false.toSignal();
+class _AppBarItemState extends State<AppBarItem> with SignalsMixin {
+  final hooved = false.asSignal(debugLabel: 'APPBAR_HOOVED', autoDispose: true);
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => hooved.value = true,
-      onExit: (_) => hooved.value = false,
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () async {
-          await ScrollUtil.to(widget.currentKey.currentContext!);
-        },
-        child: Container(
-          color: Colors.transparent,
-          height: 80,
+    return GestureDetector(
+      onTap: () async {
+        await ScrollUtil.to(widget.currentKey.currentContext!);
+      },
+      child: Container(
+        color: Colors.transparent,
+        child: MouseRegion(
+          onEnter: (_) => hooved.value = true,
+          onExit: (_) => hooved.value = false,
+          cursor: SystemMouseCursors.click,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -181,8 +180,8 @@ class _AppBarItemState extends State<AppBarItem> {
                 width: hooved.watch(context) ? 30 : 0,
               ),
             ],
-          ),
-        ).pH(16),
+          ).pH(16),
+        ),
       ),
     );
   }

@@ -21,11 +21,12 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SignalsMixin {
   bool ignoreFirst = true;
   @override
   void initState() {
-    LocalizationSession().locale.listen(context, () async {
+    effect(() {
+      log(LocalizationSession().locale.value.languageCode);
       if (!ignoreFirst) {
         Future.delayed(50.ms, () {
           if (mounted) setState(() {});
@@ -35,6 +36,7 @@ class _HomePageState extends State<HomePage> {
         ignoreFirst = false;
       }
     });
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       mainAnimation = false;
     });

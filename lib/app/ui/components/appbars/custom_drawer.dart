@@ -31,7 +31,7 @@ class CustomDrawer extends StatelessWidget {
           ItemDrawer(
             icon: const Icon(
               Icons.home_outlined,
-              color: AppColors.grey_600,
+              color: AppColors.purple_800,
             ),
             name: 'home'.t,
             ontap: () {
@@ -42,7 +42,7 @@ class CustomDrawer extends StatelessWidget {
           ItemDrawer(
             icon: const Icon(
               Icons.person_outlined,
-              color: AppColors.grey_600,
+              color: AppColors.purple_800,
             ),
             name: 'about_me'.t,
             ontap: () {
@@ -53,7 +53,7 @@ class CustomDrawer extends StatelessWidget {
           ItemDrawer(
             icon: const Icon(
               Icons.apps_outlined,
-              color: AppColors.grey_600,
+              color: AppColors.purple_800,
             ),
             name: 'projects'.t,
             ontap: () {
@@ -64,7 +64,7 @@ class CustomDrawer extends StatelessWidget {
           ItemDrawer(
             icon: const Icon(
               Icons.email_outlined,
-              color: AppColors.grey_600,
+              color: AppColors.purple_800,
             ),
             name: 'contact'.t,
             ontap: () {
@@ -76,8 +76,21 @@ class CustomDrawer extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                const Text(
-                  'Desenvolvido com ❤️ por',
+                const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Desenvolvido com ',
+                    ),
+                    Icon(
+                      Icons.favorite,
+                      size: 14,
+                      color: AppColors.error,
+                    ),
+                    Text(
+                      ' por',
+                    ),
+                  ],
                 ),
                 const Text(
                   'Guilherme Martins',

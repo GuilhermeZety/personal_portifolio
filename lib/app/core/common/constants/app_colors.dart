@@ -1,9 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class AppColors {
   AppColors._();
 
-  static const Color primary = purple_500;
+  static const Color primary = purple_600;
   static const Color secondary = pink_500;
   static const Color tertiary = yellow_500;
 
@@ -29,7 +31,8 @@ class AppColors {
   static const Color blue_800 = Color(0xFF181C24);
 
   //
-  static const Color purple_500 = Color(0xFF7D45F5);
+  static const Color purple_600 = Color(0xFF7D45F5);
+  static const Color purple_800 = Color(0xFF521BBC);
   static const Color pink_500 = Color(0xFFEA335F);
   static const Color yellow_500 = Color(0xFFE3A049);
 
@@ -48,4 +51,18 @@ class AppColors {
   static const Color success = Color(0xFF34E46F);
   static const Color warning = Color(0xFFF0B200);
   static const Color error = Color(0xFFD34A4A);
+
+  static Color getRandomColor() {
+    // Define a lista com as cores em formato hexadecimal
+    List<Color> colors = [
+      const Color(0xFF521BBC), // Cor #521BBC
+      const Color(0xFF7D45F5), // Cor #7D45F5
+      const Color(0xFFEA335F), // Cor #EA335F
+      const Color(0xFFE3A049), // Cor #E3A049
+    ];
+
+    // Retorna uma cor aleatória da lista
+    Random random = Random();
+    return colors[random.nextInt(colors.length)].withOpacity(0.6);
+  }
 }

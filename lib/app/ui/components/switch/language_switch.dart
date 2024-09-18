@@ -13,7 +13,7 @@ class LanguageSwitch extends StatefulWidget {
   State<LanguageSwitch> createState() => _LanguageSwitchState();
 }
 
-class _LanguageSwitchState extends State<LanguageSwitch> with SignalsAutoDisposeMixin {
+class _LanguageSwitchState extends State<LanguageSwitch> with SignalsMixin {
   @override
   Widget build(BuildContext context) {
     return IconButton(
