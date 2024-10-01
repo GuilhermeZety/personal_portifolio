@@ -52,6 +52,7 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
           decoration: BoxDecoration(
             color: context.colorScheme.secondaryContainer,
             borderRadius: BorderRadius.circular(100),
+            border: Border.all(color: context.colorScheme.tertiaryContainer),
           ),
           child: Row(
             children: [
