@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
+import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/widget/widget_extension.dart';
 import 'package:personal_portifolio/app/core/shared/features/prismic/models/content_model.dart';
 import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
+import 'package:personal_portifolio/app/ui/components/button.dart';
 
 class AboutMeSection extends StatefulWidget {
   const AboutMeSection({super.key});
@@ -33,27 +37,51 @@ class _AboutMeSectionState extends State<AboutMeSection> {
             );
           }
 
-          return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                //Trocar para imagem cacheada
-                Image.network(
-                  content!.image,
-                  width: 200,
-                  height: 200,
-                ),
-                Text(content!.title.translated(context)),
-                Text(content!.subtitle.translated(context)),
-                Text(content!.description.translated(context)),
-                Text(content!.description.translated(context)),
-                Text(content!.curriculumLink),
-                Text(content!.emailLink),
-              ],
-            ),
-          );
+          return Row(
+            children: [
+              Image.network(
+                content!.image,
+                width: 300,
+                height: 300,
+              ),
+              const Gap(30),
+              _buildAboutMe.expanded(),
+            ],
+          ).pH(context.pageMargin).pV(40);
         },
-      ).pTop(40),
+      ),
     );
   }
+
+  Widget get _buildAboutMe => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            content!.title.translated(context),
+            style: context.textTheme.titleLarge,
+          ),
+          const Gap(16),
+          Text(
+            content!.subtitle.translated(context),
+            style: context.textTheme.titleMedium,
+          ),
+          const Gap(16),
+          Text(content!.description.translated(context)),
+          const Gap(80),
+          Row(
+            children: [
+              Button(
+                onPressed: () async {},
+                child: const Text('Curriculo'),
+              ),
+              const Gap(8),
+              Button(
+                backgroundColor: AppColors.secondary,
+                onPressed: () async {},
+                child: const Text('Email'),
+              ),
+            ],
+          ),
+        ],
+      );
 }

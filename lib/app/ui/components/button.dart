@@ -15,7 +15,6 @@ class Button extends StatefulWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
   final EdgeInsets padding;
-  final bool outlined;
   final bool disabled;
 
   const Button({
@@ -25,22 +24,10 @@ class Button extends StatefulWidget {
     this.focusNode,
     this.onLongPress,
     this.disabled = false,
-    this.backgroundColor = AppColors.blue_600,
+    this.backgroundColor = AppColors.primary,
     this.foregroundColor = AppColors.white,
-    this.padding = const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-  }) : outlined = false;
-  const Button.outlined({
-    super.key,
-    required this.onPressed,
-    required this.child,
-    this.focusNode,
-    this.onLongPress,
-    this.disabled = false,
-    this.backgroundColor = AppColors.white,
-    this.foregroundColor = AppColors.grey_500,
-    this.padding = const EdgeInsets.symmetric(vertical: 16, horizontal: 26),
-  }) : outlined = true;
-
+    this.padding = const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+  });
   @override
   State<Button> createState() => _ButtonState();
 }
@@ -88,33 +75,36 @@ class _ButtonState extends State<Button> {
     return Builder(
       builder: (context) {
         var content = Material(
-          color: widget.backgroundColor?.withOpacity(widget.disabled ? 0.5 : 1),
+          color: widget.backgroundColor?.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(10),
           child: InkWell(
             onTap: action,
-            child: Padding(
-              padding: widget.padding,
-              child: DefaultTextStyle(
-                style: TextStyle(
-                  fontFamily: AppFonts.defaultFont,
-                  color: widget.foregroundColor,
-                  fontSize: 16,
-                  fontWeight: AppFonts.medium,
-                  letterSpacing: 0.3,
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: widget.backgroundColor!,
                 ),
-                child: Center(
-                  child: isLoading ? const Loader(size: 16, inverted: true) : widget.child,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: widget.padding,
+                child: DefaultTextStyle(
+                  style: TextStyle(
+                    fontFamily: AppFonts.defaultFont,
+                    color: widget.foregroundColor,
+                    fontSize: 16,
+                    fontWeight: AppFonts.medium,
+                    letterSpacing: 0.3,
+                  ),
+                  child: Center(
+                    child: isLoading ? const Loader(size: 16, inverted: true) : widget.child,
+                  ),
                 ),
               ),
             ),
           ),
         );
-        if (widget.outlined) {
-          return Container(
-            color: widget.foregroundColor,
-            padding: const EdgeInsets.all(1),
-            child: content,
-          );
-        }
         return content;
       },
     );

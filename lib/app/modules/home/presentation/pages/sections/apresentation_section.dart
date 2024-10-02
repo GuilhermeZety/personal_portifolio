@@ -145,23 +145,25 @@ class AnimatedName extends StatefulWidget {
 class _AnimatedNameState extends State<AnimatedName> {
   double fontSize = 42;
   final String name = 'Guilherme Martins.';
-  final show = 0.asSignal(debugLabel: 'SHOW_NAME_LENGH');
+  final show = 10.asSignal(debugLabel: 'SHOW_NAME_LENGH');
   final showBar = true.asSignal(debugLabel: 'SHOW_NAME_BOOL');
 
   late Timer timer;
 
   @override
   void initState() {
-    timer = Timer.periodic(100.ms, (_) {
-      if (show.value == name.length) {
-        timer.cancel();
-      } else {
-        show.value = show.value + 1;
-      }
-    });
-    Timer.periodic(1000.ms, (_) {
-      showBar.value = !showBar.value;
-    });
+    //TODO: Recolocar
+
+    // timer = Timer.periodic(100.ms, (_) {
+    //   if (show.value == name.length) {
+    //     timer.cancel();
+    //   } else {
+    //     show.value = show.value + 1;
+    //   }
+    // });
+    // Timer.periodic(1000.ms, (_) {
+    //   showBar.value = !showBar.value;
+    // });
     super.initState();
   }
 
