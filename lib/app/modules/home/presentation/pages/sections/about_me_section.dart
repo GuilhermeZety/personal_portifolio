@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:personal_portifolio/app/core/common/extensions/widget/widget_extension.dart';
 import 'package:personal_portifolio/app/core/shared/features/prismic/models/content_model.dart';
 import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 
@@ -36,14 +37,23 @@ class _AboutMeSectionState extends State<AboutMeSection> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                //Trocar para imagem cacheada
+                Image.network(
+                  content!.image,
+                  width: 200,
+                  height: 200,
+                ),
                 Text(content!.title.translated(context)),
                 Text(content!.subtitle.translated(context)),
                 Text(content!.description.translated(context)),
+                Text(content!.description.translated(context)),
+                Text(content!.curriculumLink),
+                Text(content!.emailLink),
               ],
             ),
           );
         },
-      ),
+      ).pTop(40),
     );
   }
 }
