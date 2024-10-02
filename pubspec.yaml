@@ -28,6 +28,7 @@ dependencies:
   auto_size_text: ^3.0.0
   flusmic: ^4.0.1
   dio: ^5.7.0
+  equatable: ^2.0.5
   
 dev_dependencies:
   flutter_test:

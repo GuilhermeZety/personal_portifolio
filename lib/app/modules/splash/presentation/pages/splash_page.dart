@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_assets.dart';
 import 'package:personal_portifolio/app/core/common/extensions/widget/widget_extension.dart';
 import 'package:personal_portifolio/app/core/common/transitions/fade_transition.dart';
+import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 import 'package:personal_portifolio/app/core/shared/session_memory.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/home_page.dart';
 
@@ -21,7 +22,8 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await SessionMemory().load();
-      Future.delayed(2.seconds, () {
+      await PrismicMemory().load();
+      Future.delayed(1.5.seconds, () {
         Navigator.of(context).pushAndRemoveUntil(FadePageRoute(const HomePage()), (_) => false);
       });
     });

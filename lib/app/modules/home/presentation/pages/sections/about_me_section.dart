@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+import 'package:personal_portifolio/app/core/shared/features/prismic/models/content_model.dart';
+import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 
 class AboutMeSection extends StatefulWidget {
   const AboutMeSection({super.key});
@@ -11,27 +12,37 @@ class AboutMeSection extends StatefulWidget {
 }
 
 class _AboutMeSectionState extends State<AboutMeSection> {
-  final int developedProjects = 12;
+  AboutMeContentModel? content;
+
+  @override
+  void initState() {
+    content = PrismicMemory().aboutMe;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       key: AboutMeSection.currentKey,
-      child: Column(
-        children: [
-          const Gap(60),
-          //TODO: Colocar numeros aqui :)
-          Container(
-            width: 100,
-            height: 200,
-            color: Colors.amber,
-          ),
-          Container(
-            width: 100,
-            height: 200,
-            color: Colors.red,
-          ),
-        ],
+      child: Builder(
+        builder: (context) {
+          if (content == null) {
+            return const Center(
+              child: Text('Houve um problema nessa sessão em breve sera resolvido.'),
+            );
+          }
+
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(content!.title.translated(context)),
+                Text(content!.subtitle.translated(context)),
+                Text(content!.description.translated(context)),
+              ],
+            ),
+          );
+        },
       ),
     );
   }

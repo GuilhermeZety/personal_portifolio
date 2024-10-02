@@ -4,6 +4,7 @@ import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:personal_portifolio/app/core/shared/location_session.dart';
+import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/about_me_section.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/apresentation_section.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/contact_section.dart';
@@ -25,6 +26,7 @@ class _HomePageState extends State<HomePage> with SignalsMixin {
   bool ignoreFirst = true;
   @override
   void initState() {
+    log('${PrismicMemory().aboutMe}', name: 'Prismic');
     effect(() {
       log(LocalizationSession().locale.value.languageCode);
       if (!ignoreFirst) {
