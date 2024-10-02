@@ -75,9 +75,21 @@ class AboutMeContentModel extends ContentModel {
     return AboutMeContentModel(
       uuid: map['uid'],
       image: map['data']['foto']['url'],
-      title: TranslatedString.fromMap(map['data']['titulo'].first as Map<String, dynamic>, 'title'),
-      subtitle: TranslatedString.fromMap(map['data']['subtitle'].first as Map<String, dynamic>, 'subtitle'),
-      description: TranslatedString.fromMap(map['data']['description'].first as Map<String, dynamic>, 'description'),
+      title: TranslatedString.fromMap(
+        map['data']['titulo'].first as Map<String, dynamic>,
+        'title',
+        false,
+      ),
+      subtitle: TranslatedString.fromMap(
+        map['data']['subtitle'].first as Map<String, dynamic>,
+        'subtitle',
+        false,
+      ),
+      description: TranslatedString.fromMap(
+        map['data']['description'].first as Map<String, dynamic>,
+        'description',
+        true,
+      ),
       curriculumLink: map['data']['curriculum']['url'],
       emailLink: map['data']['email']['url'],
     );

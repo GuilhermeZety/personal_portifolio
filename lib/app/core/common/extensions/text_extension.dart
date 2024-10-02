@@ -6,6 +6,8 @@ extension Gradient on Widget {
   }
 }
 
+extension GradientSpan on TextSpan {}
+
 class GradientText extends StatelessWidget {
   const GradientText(
     this.child, {

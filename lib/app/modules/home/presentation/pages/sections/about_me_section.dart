@@ -6,6 +6,7 @@ import 'package:personal_portifolio/app/core/common/extensions/widget/widget_ext
 import 'package:personal_portifolio/app/core/shared/features/prismic/models/content_model.dart';
 import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 import 'package:personal_portifolio/app/ui/components/button.dart';
+import 'package:personal_portifolio/app/ui/components/gradient_text_highlight.dart';
 
 class AboutMeSection extends StatefulWidget {
   const AboutMeSection({super.key});
@@ -53,35 +54,41 @@ class _AboutMeSectionState extends State<AboutMeSection> {
     );
   }
 
-  Widget get _buildAboutMe => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            content!.title.translated(context),
-            style: context.textTheme.titleLarge,
-          ),
-          const Gap(16),
-          Text(
-            content!.subtitle.translated(context),
-            style: context.textTheme.titleMedium,
-          ),
-          const Gap(16),
-          Text(content!.description.translated(context)),
-          const Gap(80),
-          Row(
-            children: [
-              Button(
-                onPressed: () async {},
-                child: const Text('Curriculo'),
-              ),
-              const Gap(8),
-              Button(
-                backgroundColor: AppColors.secondary,
-                onPressed: () async {},
-                child: const Text('Email'),
-              ),
-            ],
-          ),
-        ],
+  Widget get _buildAboutMe => SelectionArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              content!.title.translated(context),
+              style: context.textTheme.titleLarge,
+            ),
+            const Gap(16),
+            Text(
+              content!.subtitle.translated(context),
+              style: context.textTheme.titleMedium,
+            ),
+            const Gap(16),
+            GradientTextHighlight(
+              text: content!.description.translated(context),
+              spans: content!.description.translatedHighlight(context),
+              gradient: AppColors.gradient,
+            ),
+            const Gap(80),
+            Row(
+              children: [
+                Button(
+                  onPressed: () async {},
+                  child: const Text('Curriculo'),
+                ),
+                const Gap(8),
+                Button(
+                  backgroundColor: AppColors.secondary,
+                  onPressed: () async {},
+                  child: const Text('Email'),
+                ),
+              ],
+            ),
+          ],
+        ),
       );
 }

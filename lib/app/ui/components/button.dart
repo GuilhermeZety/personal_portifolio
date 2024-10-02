@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_fonts.dart';
+import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 import 'package:personal_portifolio/app/core/common/utils/toasting.dart';
 import 'package:personal_portifolio/app/core/common/utils/vibrate.dart';
 import 'package:personal_portifolio/app/ui/components/loader.dart';
@@ -25,7 +26,7 @@ class Button extends StatefulWidget {
     this.onLongPress,
     this.disabled = false,
     this.backgroundColor = AppColors.primary,
-    this.foregroundColor = AppColors.white,
+    this.foregroundColor,
     this.padding = const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
   });
   @override
@@ -92,7 +93,7 @@ class _ButtonState extends State<Button> {
                 child: DefaultTextStyle(
                   style: TextStyle(
                     fontFamily: AppFonts.defaultFont,
-                    color: widget.foregroundColor,
+                    color: widget.foregroundColor ?? widget.backgroundColor!.lighten(0.3),
                     fontSize: 16,
                     fontWeight: AppFonts.medium,
                     letterSpacing: 0.3,

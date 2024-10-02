@@ -1,5 +1,21 @@
 import 'package:flutter/material.dart';
 
+extension LightColor on Color {
+  Color darken(double amount) {
+    assert(amount >= 0 && amount <= 1);
+    final hsl = HSLColor.fromColor(this);
+    final darkenedHsl = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
+    return darkenedHsl.toColor();
+  }
+
+  Color lighten(double amount) {
+    assert(amount >= 0 && amount <= 1);
+    final hsl = HSLColor.fromColor(this);
+    final lightenedHsl = hsl.withLightness((hsl.lightness + amount).clamp(0.0, 1.0));
+    return lightenedHsl.toColor();
+  }
+}
+
 extension ToWidgetStateProperty on Color {
   WidgetStateProperty<Color?>? toWidgetStateProperty() {
     return WidgetStateProperty.all<Color?>(this);
