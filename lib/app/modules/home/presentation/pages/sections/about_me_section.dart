@@ -7,6 +7,7 @@ import 'package:personal_portifolio/app/core/shared/features/prismic/models/cont
 import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 import 'package:personal_portifolio/app/ui/components/button.dart';
 import 'package:personal_portifolio/app/ui/components/gradient_text_highlight.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutMeSection extends StatefulWidget {
   const AboutMeSection({super.key});
@@ -40,15 +41,18 @@ class _AboutMeSectionState extends State<AboutMeSection> {
 
           return Row(
             children: [
-              Image.network(
-                content!.image,
-                width: 300,
-                height: 300,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  content!.image,
+                  width: 300,
+                  height: 300,
+                ),
               ),
-              const Gap(30),
+              const Gap(80),
               _buildAboutMe.expanded(),
             ],
-          ).pH(context.pageMargin).pV(40);
+          ).pH(context.pageMargin).pV(80);
         },
       ),
     );
@@ -77,14 +81,34 @@ class _AboutMeSectionState extends State<AboutMeSection> {
             Row(
               children: [
                 Button(
-                  onPressed: () async {},
-                  child: const Text('Curriculo'),
+                  onPressed: () async {
+                    launchUrl(
+                      Uri.parse(content!.curriculumLink),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.download, color: AppColors.primary).pTop(2),
+                      const Gap(8),
+                      const Text('Curriculo'),
+                    ],
+                  ),
                 ),
                 const Gap(8),
                 Button(
                   backgroundColor: AppColors.secondary,
-                  onPressed: () async {},
-                  child: const Text('Email'),
+                  onPressed: () async {
+                    launchUrl(
+                      Uri.parse(content!.emailLink),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      const Icon(Icons.email_outlined, color: AppColors.secondary).pTop(2),
+                      const Gap(20),
+                      const Text('Email'),
+                    ],
+                  ),
                 ),
               ],
             ),
