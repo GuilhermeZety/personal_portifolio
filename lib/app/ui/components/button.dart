@@ -27,7 +27,7 @@ class Button extends StatefulWidget {
     this.disabled = false,
     this.backgroundColor = AppColors.primary,
     this.foregroundColor,
-    this.padding = const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+    this.padding = const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
   });
   @override
   State<Button> createState() => _ButtonState();

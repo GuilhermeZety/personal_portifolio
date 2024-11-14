@@ -77,7 +77,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
               spans: content!.description.translatedHighlight(context),
               gradient: AppColors.gradient,
             ),
-            const Gap(80),
+            const Gap(40),
             Row(
               children: [
                 Button(
@@ -105,7 +105,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                   child: Row(
                     children: [
                       const Icon(Icons.email_outlined, color: AppColors.secondary).pTop(2),
-                      const Gap(20),
+                      const Gap(8),
                       const Text('Email'),
                     ],
                   ),
