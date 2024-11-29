@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:lottie/lottie.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
 import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/widget/widget_extension.dart';
@@ -41,13 +42,27 @@ class _AboutMeSectionState extends State<AboutMeSection> {
 
           return Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  content!.image,
-                  width: 300,
-                  height: 300,
-                ),
+              Stack(
+                children: [
+                  Lottie.asset(
+                    'assets/lottie/${context.isDark ? 'circle_lottie_dark' : 'circle_lottie_light'}.json',
+                    width: 280,
+                    height: 280,
+                    fit: BoxFit.cover,
+                  ),
+                  Positioned.fill(
+                    child: Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(1000),
+                        child: Image.network(
+                          content!.image,
+                          width: 200,
+                          height: 200,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const Gap(80),
               _buildAboutMe.expanded(),
@@ -81,6 +96,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
             Row(
               children: [
                 Button(
+                  backgroundColor: context.colorScheme.tertiaryContainer,
                   onPressed: () async {
                     launchUrl(
                       Uri.parse(content!.curriculumLink),
@@ -90,13 +106,13 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                     children: [
                       const Icon(Icons.download, color: AppColors.primary).pTop(2),
                       const Gap(8),
-                      const Text('Curriculo'),
+                      const Text('Curriculo', style: TextStyle(color: AppColors.primary)),
                     ],
                   ),
                 ),
                 const Gap(8),
                 Button(
-                  backgroundColor: AppColors.secondary,
+                  backgroundColor: context.colorScheme.tertiaryContainer,
                   onPressed: () async {
                     launchUrl(
                       Uri.parse(content!.emailLink),
@@ -106,7 +122,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                     children: [
                       const Icon(Icons.email_outlined, color: AppColors.secondary).pTop(2),
                       const Gap(8),
-                      const Text('Email'),
+                      const Text('Email', style: TextStyle(color: AppColors.secondary)),
                     ],
                   ),
                 ),

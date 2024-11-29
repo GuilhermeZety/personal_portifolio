@@ -62,6 +62,7 @@ class AppTheme {
           tertiaryContainer: AppColors.grey_200,
           surface: AppColors.white,
           error: AppColors.error,
+          brightness: Brightness.light,
         ),
         inputDecorationTheme: InputDecorationTheme(
           isDense: false,
@@ -158,6 +159,7 @@ class AppTheme {
           tertiaryContainer: AppColors.grey_800,
           surface: AppColors.grey_800,
           error: AppColors.error,
+          brightness: Brightness.dark,
         ),
       );
 }

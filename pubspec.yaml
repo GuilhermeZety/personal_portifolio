@@ -12,31 +12,29 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   animated_theme_switcher: ^2.0.10
-  custom_refresh_indicator: ^4.0.1
-  flutter_animate: ^4.5.0
+  flutter_animate: ^4.5.2
   flutter_vibrate: ^1.3.0
   gap: ^3.0.1
-  loading_animation_widget: ^1.2.1
+  loading_animation_widget: ^1.3.0
   localization: ^2.1.1
   signals: ^5.5.0
   toastification: ^2.3.0
   shared_preferences: ^2.3.2
   gif: ^2.3.0
   url_strategy: ^0.3.0
-  flutter_svg: ^2.0.10+1
-  animated_text_kit: ^4.2.2
+  flutter_svg: ^2.0.16
   auto_size_text: ^3.0.0
-  flusmic: ^4.0.1
   dio: ^5.7.0
-  equatable: ^2.0.5
-  url_launcher: ^6.3.0
+  equatable: ^2.0.7
+  url_launcher: ^6.3.1
+  lottie: ^3.1.3
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
   flutter_launcher_icons: "^0.14.1"
-  flutter_native_splash: ^2.4.1
+  flutter_native_splash: ^2.4.3
 
 flutter_native_splash:
   android: false
@@ -67,6 +65,7 @@ flutter:
     - assets/gifs/
     - assets/svgs/
     - assets/translations/
+    - assets/lottie/
 
   fonts:
     - family: Segoe UI

@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> with SignalsMixin {
         body: Stack(
           children: [
             CustomScrollView(
+              // controller: ScrollController(initialScrollOffset: 600),
               slivers: [
                 CustomAppBar(),
                 ApresentationSection(),
