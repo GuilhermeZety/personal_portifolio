@@ -15,14 +15,9 @@ class _ProjectsSectionState extends State<ProjectsSection> {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       key: ProjectsSection.currentKey,
-      child: Column(
+      child: const Column(
         children: [
-          const Gap(60),
-          Container(
-            width: 200,
-            height: 500,
-            color: Colors.blue,
-          ),
+          Gap(60),
         ],
       ),
     );

@@ -19,6 +19,10 @@ class AppSvgs {
   final String spain = '$_path/spain.svg';
   final String unitedStates = '$_path/united-states.svg';
   final String mouse = '$_path/mouse.svg';
+  final String pin = '$_path/pin.svg';
+  final String discord = '$_path/discord.svg';
+  final String github = '$_path/github.svg';
+  final String linkedin = '$_path/linkedin.svg';
 }
 
 class AppGifs {

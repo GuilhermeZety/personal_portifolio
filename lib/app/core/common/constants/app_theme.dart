@@ -12,7 +12,7 @@ class AppTheme {
   factory AppTheme() => AppTheme._instance;
   //
 
-  final Signal<ThemeMode> themeMode = ThemeMode.dark.asSignal(debugLabel: 'THEME_MODE');
+  final Signal<ThemeMode> themeMode = signal(ThemeMode.dark, debugLabel: 'THEME_MODE');
 
   void init() {
     var value = CurrentSession().prefs.getBool('theme');
@@ -32,7 +32,7 @@ class AppTheme {
         textSelectionTheme: TextSelectionThemeData(
           selectionHandleColor: AppColors.primary,
           cursorColor: AppColors.primary,
-          selectionColor: AppColors.primary.withOpacity(0.2),
+          selectionColor: AppColors.primary.changeOpacity(0.2),
         ),
         textTheme: const TextTheme(
           titleLarge: TextStyle(color: AppColors.grey_900, fontWeight: AppFonts.bold, fontSize: 32, letterSpacing: 0.3),
@@ -69,7 +69,7 @@ class AppTheme {
           prefixIconColor: AppColors.grey_300,
           fillColor: AppColors.white,
           hintStyle: TextStyle(
-            color: AppColors.grey_300.withOpacity(0.8),
+            color: AppColors.grey_300.changeOpacity(0.8),
             fontSize: 16,
             fontWeight: FontWeight.normal,
           ),
@@ -98,7 +98,7 @@ class AppTheme {
           //ERROR  ------
           errorStyle: TextStyle(
             fontWeight: FontWeight.bold,
-            color: AppColors.error.withOpacity(0.5),
+            color: AppColors.error.changeOpacity(0.5),
           ),
           errorBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.zero,
@@ -122,7 +122,7 @@ class AppTheme {
         textSelectionTheme: TextSelectionThemeData(
           selectionHandleColor: AppColors.primary,
           cursorColor: AppColors.primary,
-          selectionColor: AppColors.primary.withOpacity(0.2),
+          selectionColor: AppColors.primary.changeOpacity(0.2),
         ),
         textTheme: const TextTheme(
           titleLarge: TextStyle(color: AppColors.white, fontWeight: AppFonts.bold, fontSize: 32, letterSpacing: 0.3),

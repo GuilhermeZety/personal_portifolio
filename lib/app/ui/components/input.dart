@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_fonts.dart';
+import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/widget/widget_extension.dart';
 
@@ -177,7 +178,7 @@ class _InputState extends State<Input> {
     if (widget.keyboard == TextInputType.visiblePassword) {
       suffix = widget.keyboard == TextInputType.visiblePassword
           ? IconButton(
-              color: AppColors.grey_500.withOpacity(0.8),
+              color: AppColors.grey_500.changeOpacity(0.8),
               icon: Icon(visible ? Icons.visibility : Icons.visibility_off),
               onPressed: () => setState(() => visible = !visible),
             )

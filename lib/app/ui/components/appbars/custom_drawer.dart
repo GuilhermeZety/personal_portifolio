@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_fonts.dart';
+import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/locale_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/text_extension.dart';
@@ -129,7 +130,7 @@ class ItemDrawer extends StatelessWidget {
                 fontWeight: AppFonts.medium,
                 letterSpacing: 0.5,
                 fontSize: 16,
-                color: context.textTheme.titleLarge?.color?.withOpacity(0.6),
+                color: context.textTheme.titleLarge?.color?.changeOpacity(0.6),
               ),
             ),
             const Gap(24),

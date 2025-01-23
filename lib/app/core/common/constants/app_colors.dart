@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 
 class AppColors {
   AppColors._();
@@ -63,6 +64,6 @@ class AppColors {
 
     // Retorna uma cor aleatória da lista
     Random random = Random();
-    return colors[random.nextInt(colors.length)].withOpacity(0.6);
+    return colors[random.nextInt(colors.length)].changeOpacity(0.6);
   }
 }

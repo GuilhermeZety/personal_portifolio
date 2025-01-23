@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gap/gap.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_fonts.dart';
+import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/locale_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/widget/text_extension.dart';
@@ -136,7 +137,7 @@ class AppBarItem extends StatefulWidget {
 }
 
 class _AppBarItemState extends State<AppBarItem> with SignalsMixin {
-  final hooved = false.asSignal(debugLabel: 'APPBAR_HOOVED', autoDispose: true);
+  final hooved = signal(false, debugLabel: 'APPBAR_HOOVED', autoDispose: true);
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +161,7 @@ class _AppBarItemState extends State<AppBarItem> with SignalsMixin {
                   fontWeight: AppFonts.medium,
                   letterSpacing: 0.5,
                   fontSize: 16,
-                  color: context.textTheme.titleLarge?.color?.withOpacity(hooved.watch(context) ? 1 : 0.6),
+                  color: context.textTheme.titleLarge?.color?.changeOpacity(hooved.watch(context) ? 1 : 0.6),
                 ),
                 child: Text(
                   widget.title,

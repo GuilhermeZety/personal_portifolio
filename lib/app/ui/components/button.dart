@@ -76,7 +76,7 @@ class _ButtonState extends State<Button> {
     return Builder(
       builder: (context) {
         var content = Material(
-          color: widget.backgroundColor?.withOpacity(0.2),
+          color: widget.backgroundColor?.changeOpacity(0.2),
           borderRadius: BorderRadius.circular(10),
           child: InkWell(
             onTap: action,

@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_assets.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_fonts.dart';
+import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/locale_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/text_extension.dart';
@@ -88,7 +89,7 @@ class _ApresentationSectionState extends State<ApresentationSection> {
               )
             : Container(
                 decoration: BoxDecoration(
-                  color: context.colorScheme.tertiaryContainer.withOpacity(0.6),
+                  color: context.colorScheme.tertiaryContainer.changeOpacity(0.6),
                   shape: BoxShape.circle,
                 ),
                 width: 20,
@@ -145,8 +146,8 @@ class AnimatedName extends StatefulWidget {
 class _AnimatedNameState extends State<AnimatedName> {
   double fontSize = 42;
   final String name = 'Guilherme Martins.';
-  final show = 0.asSignal(debugLabel: 'SHOW_NAME_LENGH');
-  final showBar = true.asSignal(debugLabel: 'SHOW_NAME_BOOL');
+  final show = signal(0, debugLabel: 'SHOW_NAME_LENGH');
+  final showBar = signal(true, debugLabel: 'SHOW_NAME_BOOL');
 
   late Timer timer;
 
@@ -192,7 +193,7 @@ class _AnimatedNameState extends State<AnimatedName> {
             style: TextStyle(
               fontWeight: AppFonts.medium,
               fontSize: fontSize,
-              color: context.textTheme.titleLarge?.color?.withOpacity(showBar.value ? 1 : 0),
+              color: context.textTheme.titleLarge?.color?.changeOpacity(showBar.value ? 1 : 0),
             ),
             child: const Text(
               '|',

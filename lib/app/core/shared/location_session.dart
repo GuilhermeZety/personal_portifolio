@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:personal_portifolio/app/core/shared/current_session.dart';
-import 'package:signals/signals.dart';
 import 'package:signals/signals_flutter.dart';
 
 class LocalizationSession {
@@ -14,9 +13,12 @@ class LocalizationSession {
   late Signal<Locale> locale;
 
   void init() {
-    locale = Locale(
-      CurrentSession().prefs.getString('localization') ?? PlatformDispatcher.instance.locale.languageCode,
-    ).asSignal(debugLabel: 'LOCALIZATION');
+    locale = signal(
+      Locale(
+        CurrentSession().prefs.getString('localization') ?? PlatformDispatcher.instance.locale.languageCode,
+      ),
+      debugLabel: 'LOCALIZATION',
+    );
   }
 
   final List<(String, String)> suportedLocales = [

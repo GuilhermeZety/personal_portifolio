@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0+1
 
 environment:
-  sdk: '>=3.5.3 <4.0.0'
+  sdk: '>=3.6.1 <4.0.0'
 
 dependencies:
   flutter:
@@ -17,24 +17,24 @@ dependencies:
   gap: ^3.0.1
   loading_animation_widget: ^1.3.0
   localization: ^2.1.1
-  signals: ^5.5.0
+  signals: ^6.0.2
   toastification: ^2.3.0
   shared_preferences: ^2.3.2
   gif: ^2.3.0
   url_strategy: ^0.3.0
-  flutter_svg: ^2.0.16
+  flutter_svg: ^2.0.17
   auto_size_text: ^3.0.0
   dio: ^5.7.0
   equatable: ^2.0.7
   url_launcher: ^6.3.1
-  lottie: ^3.1.3
+  lottie: ^3.3.1
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  flutter_launcher_icons: "^0.14.1"
-  flutter_native_splash: ^2.4.3
+  flutter_launcher_icons: "^0.14.3"
+  flutter_native_splash: ^2.4.4
 
 flutter_native_splash:
   android: false

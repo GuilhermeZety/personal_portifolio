@@ -8,7 +8,6 @@ import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/about_me_section.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/apresentation_section.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/contact_section.dart';
-import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/footer_section.dart';
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/projects_section.dart';
 import 'package:personal_portifolio/app/ui/components/appbars/custom_app_bar.dart';
 import 'package:personal_portifolio/app/ui/components/appbars/custom_drawer.dart';
@@ -48,19 +47,18 @@ class _HomePageState extends State<HomePage> with SignalsMixin {
   @override
   Widget build(BuildContext context) {
     return ThemeSwitchingArea(
-      child: const Scaffold(
-        endDrawer: CustomDrawer(),
+      child: Scaffold(
+        endDrawer: const CustomDrawer(),
         body: Stack(
           children: [
             CustomScrollView(
-              // controller: ScrollController(initialScrollOffset: 600),
+              controller: ScrollController(initialScrollOffset: 1200),
               slivers: [
-                CustomAppBar(),
-                ApresentationSection(),
-                AboutMeSection(),
-                ProjectsSection(),
-                ContactSection(),
-                FooterSection(),
+                const CustomAppBar(),
+                const ApresentationSection(),
+                const AboutMeSection(),
+                const ProjectsSection(),
+                const ContactSection(),
               ],
             ),
           ],

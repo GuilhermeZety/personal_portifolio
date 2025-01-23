@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_colors.dart';
+import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 
 extension Expanding on Widget {
   Widget expanded({int flex = 1}) => Expanded(flex: flex, child: this);
@@ -20,7 +21,7 @@ extension Heroic on Widget {
 extension Shimmer on Widget {
   Widget shim() => animate(onPlay: (controller) => controller.repeat()).shimmer(
         duration: 2.seconds,
-        color: AppColors.white.withOpacity(0.5),
+        color: AppColors.white.changeOpacity(0.5),
         delay: 2.seconds,
         size: 0.5,
       );
