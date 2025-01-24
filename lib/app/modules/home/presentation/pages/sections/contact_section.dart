@@ -35,7 +35,7 @@ class _FooterSectionState extends State<ContactSection> {
             const Gap(60),
             _buildTitle(),
             const Gap(20),
-            const Text('Estou sempre disponível!'),
+            Text('contact_description'.t),
             const Gap(40),
             _buildContact(),
             const Gap(80),
