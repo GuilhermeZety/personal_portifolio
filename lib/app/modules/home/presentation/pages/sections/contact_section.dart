@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:personal_portifolio/app/core/common/constants/app_assets.dart';
 import 'package:personal_portifolio/app/core/common/extensions/color_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/context_extension.dart';
 import 'package:personal_portifolio/app/core/common/extensions/locale_extension.dart';
+import 'package:personal_portifolio/app/core/common/extensions/widget/widget_extension.dart';
+import 'package:personal_portifolio/app/core/shared/features/prismic/models/contact_model.dart';
+import 'package:personal_portifolio/app/core/shared/prismic_memory.dart';
 import 'package:personal_portifolio/app/ui/components/panel.dart';
 import 'package:personal_portifolio/main.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ContactSection extends StatefulWidget {
   const ContactSection({super.key});
@@ -19,6 +22,8 @@ class ContactSection extends StatefulWidget {
 }
 
 class _FooterSectionState extends State<ContactSection> {
+  ContactContentModel contact = PrismicMemory().contact!;
+
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -66,40 +71,23 @@ class _FooterSectionState extends State<ContactSection> {
       withShadow: true,
       padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 8),
       color: context.colorScheme.primaryContainer,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ContactItem(
-            svg: AppAssets.svgs.pin,
-            text: 'Endereço',
-            link: '+55 11 99999-9999',
-            description: 'Blumenau/SC',
-            color: const Color(0xFF34A068),
-          ),
-          ContactItem(
-            svg: AppAssets.svgs.linkedin,
-            text: 'Linkedin',
-            link: '+55 11 99999-9999',
-            description: '/guilherme-m-l-martins',
-            color: const Color(0xFF1578B6),
-          ),
-          ContactItem(
-            svg: AppAssets.svgs.github,
-            text: 'Github',
-            link: '+55 11 99999-9999',
-            description: '@GuilhermeZety',
-            color: const Color(0xFFBE2FAE),
-          ),
-          ContactItem(
-            svg: AppAssets.svgs.discord,
-            text: 'Discord',
-            link: '+55 11 99999-9999',
-            description: 'Zezin#9999',
-            color: const Color(0xFF5669F6),
-          ),
-        ],
+      child: Wrap(
+        alignment: WrapAlignment.spaceEvenly,
+        spacing: 12,
+        runSpacing: 12,
+        children: contact.items
+            .map(
+              (e) => ContactItem(
+                svg: e.icon,
+                text: e.title,
+                link: e.link,
+                description: e.description,
+                color: e.color,
+              ),
+            )
+            .toList(),
       ),
-    );
+    ).pH(24);
   }
 }
 
@@ -155,10 +143,13 @@ class _ContactItemState extends State<ContactItem> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     return Panel(
+      width: 239,
       padding: const EdgeInsets.all(12),
       radius: BorderRadius.circular(10),
-      splashColor: Colors.black.changeOpacity(0.2),
-      onTap: () {},
+      splashColor: Colors.black.changeOpacity(context.isDark ? 0.2 : 0.1),
+      onTap: () {
+        launchUrlString(widget.link);
+      },
       withShadow: false,
       color: Colors.transparent,
       onMouseEnter: () {
@@ -182,7 +173,7 @@ class _ContactItemState extends State<ContactItem> with SingleTickerProviderStat
               borderRadius: BorderRadius.circular(1000),
             ),
             padding: const EdgeInsets.all(12),
-            child: SvgPicture.asset(
+            child: SvgPicture.network(
               widget.svg,
               width: 30,
               height: 30,

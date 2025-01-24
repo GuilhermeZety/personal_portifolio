@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:equatable/equatable.dart';
-import 'package:personal_portifolio/app/core/shared/features/prismic/data_types.dart';
+import 'package:personal_portifolio/app/core/shared/features/prismic/models/contact_model.dart';
 import 'package:personal_portifolio/app/core/shared/models/translated_string.dart';
 
 class ContentModel extends Equatable {
@@ -14,17 +14,20 @@ class ContentModel extends Equatable {
   });
 
   factory ContentModel.fromMap(Map<String, dynamic> map) {
-    log(map.toString());
+    log(map['type'].toString());
     if (map['type'] == 'sobre_mim') {
       return AboutMeContentModel.fromMap(map);
     }
+    if (map['type'] == 'contact') {
+      return ContactContentModel.fromMap(map);
+    }
 
     return ContentModel(
-      uuid: map['uid'],
+      uuid: map['uid'] ?? 'uuid',
     );
   }
 
-  factory ContentModel.fromJson(String source) => AboutMeContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ContentModel.fromJson(String source) => ContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   List<Object?> get props => [
@@ -39,7 +42,6 @@ class AboutMeContentModel extends ContentModel {
   final TranslatedString description;
   final String curriculumLink;
   final String emailLink;
-  final DataTypes type;
 
   const AboutMeContentModel({
     required super.uuid,
@@ -49,7 +51,7 @@ class AboutMeContentModel extends ContentModel {
     required this.description,
     required this.curriculumLink,
     required this.emailLink,
-  }) : type = DataTypes.apresentation;
+  });
 
   AboutMeContentModel copyWith({
     String? uuid,

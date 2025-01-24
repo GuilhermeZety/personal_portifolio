@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:personal_portifolio/app/core/common/constants/app_constants.dart';
@@ -41,6 +42,8 @@ class PrismicService {
       }
 
       var response = await Dio().get(AppConstants.getFullPrismicUrl(ref));
+
+      log(response.data.toString(), name: 'Prismic');
 
       await (
         prefs.setString('prismic-ref', ref),

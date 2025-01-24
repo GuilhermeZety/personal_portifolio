@@ -47,18 +47,17 @@ class _HomePageState extends State<HomePage> with SignalsMixin {
   @override
   Widget build(BuildContext context) {
     return ThemeSwitchingArea(
-      child: Scaffold(
-        endDrawer: const CustomDrawer(),
+      child: const Scaffold(
+        endDrawer: CustomDrawer(),
         body: Stack(
           children: [
             CustomScrollView(
-              controller: ScrollController(initialScrollOffset: 1200),
               slivers: [
-                const CustomAppBar(),
-                const ApresentationSection(),
-                const AboutMeSection(),
-                const ProjectsSection(),
-                const ContactSection(),
+                CustomAppBar(),
+                ApresentationSection(),
+                AboutMeSection(),
+                ProjectsSection(),
+                ContactSection(),
               ],
             ),
           ],

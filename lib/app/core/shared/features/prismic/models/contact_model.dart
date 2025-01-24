@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:personal_portifolio/app/core/shared/features/prismic/models/content_model.dart';
 
 class ContactContentModel extends ContentModel {
@@ -30,9 +31,11 @@ class ContactContentModel extends ContentModel {
 
   factory ContactContentModel.fromMap(Map<String, dynamic> map) {
     return ContactContentModel(
-      items: map['items'].map<ContactItemContentModel>(
-        (x) => ContactItemContentModel.fromMap(x as Map<String, dynamic>),
-      ),
+      items: map['data']['contact_itens']
+          .map<ContactItemContentModel>(
+            (x) => ContactItemContentModel.fromMap(x as Map<String, dynamic>),
+          )
+          .toList(),
       uuid: map['uuid'] ?? 'uuid',
     );
   }
@@ -50,12 +53,14 @@ class ContactItemContentModel extends Equatable {
   final String title;
   final String description;
   final String link;
+  final Color color;
 
   const ContactItemContentModel({
     required this.icon,
     required this.title,
     required this.description,
     required this.link,
+    required this.color,
   });
 
   ContactItemContentModel copyWith({
@@ -63,12 +68,14 @@ class ContactItemContentModel extends Equatable {
     String? title,
     String? description,
     String? link,
+    Color? color,
   }) {
     return ContactItemContentModel(
       icon: icon ?? this.icon,
       title: title ?? this.title,
       description: description ?? this.description,
       link: link ?? this.link,
+      color: color ?? this.color,
     );
   }
 
@@ -82,11 +89,15 @@ class ContactItemContentModel extends Equatable {
   }
 
   factory ContactItemContentModel.fromMap(Map<String, dynamic> map) {
+    var color = (map['color'] as String).replaceAll('#', '');
+    color = '0xFF$color';
+
     return ContactItemContentModel(
-      icon: map['icon'] as String,
-      title: map['title'] as String,
-      description: map['description'] as String,
-      link: map['link'] as String,
+      icon: map['icon']['url'] as String,
+      title: map['title'].first['text'] as String,
+      description: map['description'].first['text'] as String,
+      link: map['link']['url'] as String,
+      color: Color(int.parse(color)),
     );
   }
 
