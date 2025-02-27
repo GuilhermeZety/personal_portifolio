@@ -9,9 +9,7 @@ void main() async {
   setPathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
   CurrentSession().init();
-  runApp(
-    const AppWidget(),
-  );
+  runApp(const AppWidget());
 }
 
 bool mainAnimation = true;

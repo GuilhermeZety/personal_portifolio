@@ -46,15 +46,13 @@ class _ButtonState extends State<Button> {
         if (widget.onPressed == null) return;
 
         isLoading = true;
-        if (!mounted) return;
-        setState(() {});
+        if (mounted) setState(() {});
 
         vibrate(FeedbackType.light);
         await widget.onPressed!();
 
         isLoading = false;
-        if (!mounted) return;
-        setState(() {});
+        if (mounted) setState(() {});
       } catch (err) {
         if (!mounted) return;
         if (err is TypeError) {
@@ -83,9 +81,7 @@ class _ButtonState extends State<Button> {
             borderRadius: BorderRadius.circular(10),
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: widget.backgroundColor!,
-                ),
+                border: Border.all(color: widget.backgroundColor!),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
@@ -99,7 +95,8 @@ class _ButtonState extends State<Button> {
                     letterSpacing: 0.3,
                   ),
                   child: Center(
-                    child: isLoading ? const Loader(size: 16, inverted: true) : widget.child,
+                    child:
+                        isLoading ? const Loader(size: 16, inverted: true) : widget.child,
                   ),
                 ),
               ),

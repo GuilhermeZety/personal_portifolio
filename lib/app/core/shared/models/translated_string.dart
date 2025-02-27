@@ -50,7 +50,11 @@ class TranslatedString {
     this.spanishHighlight = const [],
   });
 
-  factory TranslatedString.fromMap(Map<String, dynamic> map, String key, bool withHighlight) {
+  factory TranslatedString.fromMap(
+    Map<String, dynamic> map,
+    String key,
+    bool withHighlight,
+  ) {
     String getText(String language) {
       return map['${key}_$language'].first['text'];
     }
@@ -58,11 +62,9 @@ class TranslatedString {
     List<(int, int)> getHighlight(String language) {
       if (withHighlight) {
         var item = map['${key}_$language'].first;
-        return List<Map<String, dynamic>>.from(item['spans'])
-            .map(
-              (e) => (e['start'] as int, e['end'] as int),
-            )
-            .toList();
+        return List<Map<String, dynamic>>.from(
+          item['spans'],
+        ).map((e) => (e['start'] as int, e['end'] as int)).toList();
       }
       return [];
     }

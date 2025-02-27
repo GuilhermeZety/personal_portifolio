@@ -16,9 +16,10 @@ extension GetTheme on BuildContext {
   bool get isTablet => _size.width >= 600 && _size.width < 900;
   bool get isDesktop => _size.width >= 900;
 
-  LayoutTypes get layout => isMobile
-      ? LayoutTypes.mobile
-      : isTablet
+  LayoutTypes get layout =>
+      isMobile
+          ? LayoutTypes.mobile
+          : isTablet
           ? LayoutTypes.tablet
           : LayoutTypes.desktop;
 
@@ -89,7 +90,8 @@ extension GetTheme on BuildContext {
 
   bool get isDark => colorScheme.brightness == Brightness.dark;
 
-  double get pageMargin => (width - contentMaxWidth) < 24 ? 24 : (width - contentMaxWidth) / 2;
+  double get pageMargin =>
+      (width - contentMaxWidth) < 24 ? 24 : (width - contentMaxWidth) / 2;
 }
 
 extension KeyboardExtension on BuildContext {

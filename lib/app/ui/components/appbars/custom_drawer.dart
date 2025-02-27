@@ -16,9 +16,7 @@ import 'package:personal_portifolio/app/modules/home/presentation/pages/sections
 import 'package:personal_portifolio/app/modules/home/presentation/pages/sections/projects_section.dart';
 
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({
-    super.key,
-  });
+  const CustomDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +24,9 @@ class CustomDrawer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.05,
-          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ItemDrawer(
-            icon: const Icon(
-              Icons.home_outlined,
-              color: AppColors.purple_800,
-            ),
+            icon: const Icon(Icons.home_outlined, color: AppColors.purple_800),
             name: 'home'.t,
             ontap: () {
               Scaffold.of(context).closeEndDrawer();
@@ -41,10 +34,7 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ItemDrawer(
-            icon: const Icon(
-              Icons.person_outlined,
-              color: AppColors.purple_800,
-            ),
+            icon: const Icon(Icons.person_outlined, color: AppColors.purple_800),
             name: 'about_me'.t,
             ontap: () {
               Scaffold.of(context).closeEndDrawer();
@@ -52,10 +42,7 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ItemDrawer(
-            icon: const Icon(
-              Icons.apps_outlined,
-              color: AppColors.purple_800,
-            ),
+            icon: const Icon(Icons.apps_outlined, color: AppColors.purple_800),
             name: 'projects'.t,
             ontap: () {
               Scaffold.of(context).closeEndDrawer();
@@ -63,10 +50,7 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           ItemDrawer(
-            icon: const Icon(
-              Icons.email_outlined,
-              color: AppColors.purple_800,
-            ),
+            icon: const Icon(Icons.email_outlined, color: AppColors.purple_800),
             name: 'contact'.t,
             ontap: () {
               Scaffold.of(context).closeEndDrawer();
@@ -80,22 +64,12 @@ class CustomDrawer extends StatelessWidget {
                 const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Desenvolvido com ',
-                    ),
-                    Icon(
-                      Icons.favorite,
-                      size: 14,
-                      color: AppColors.error,
-                    ),
-                    Text(
-                      ' por',
-                    ),
+                    Text('Desenvolvido com '),
+                    Icon(Icons.favorite, size: 14, color: AppColors.error),
+                    Text(' por'),
                   ],
                 ),
-                const Text(
-                  'Guilherme Martins',
-                ).gradient(AppColors.gradient),
+                const Text('Guilherme Martins').gradient(AppColors.gradient),
               ],
             ).pBottom(24),
           ),
@@ -106,7 +80,12 @@ class CustomDrawer extends StatelessWidget {
 }
 
 class ItemDrawer extends StatelessWidget {
-  const ItemDrawer({super.key, required this.icon, required this.name, required this.ontap});
+  const ItemDrawer({
+    super.key,
+    required this.icon,
+    required this.name,
+    required this.ontap,
+  });
 
   final Widget icon;
   final String name;

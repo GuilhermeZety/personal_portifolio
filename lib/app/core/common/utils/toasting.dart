@@ -25,16 +25,8 @@ class Toasting {
       autoCloseDuration: duration,
       showProgressBar: showProgressBar,
       dragToClose: true,
-      animationBuilder: (
-        context,
-        animation,
-        alignment,
-        child,
-      ) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
+      animationBuilder: (context, animation, alignment, child) {
+        return FadeTransition(opacity: animation, child: child);
       },
     );
   }
@@ -60,25 +52,13 @@ class Toasting {
       autoCloseDuration: duration,
       showProgressBar: showProgressBar,
       dragToClose: true,
-      animationBuilder: (
-        context,
-        animation,
-        alignment,
-        child,
-      ) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
+      animationBuilder: (context, animation, alignment, child) {
+        return FadeTransition(opacity: animation, child: child);
       },
     );
   }
 
-  static void noConnection(
-    BuildContext context, {
-    String? message,
-    Duration? duration,
-  }) {
+  static void noConnection(BuildContext context, {String? message, Duration? duration}) {
     vibrate(FeedbackType.error);
     error(
       context,
@@ -109,16 +89,8 @@ class Toasting {
       autoCloseDuration: duration,
       showProgressBar: showProgressBar,
       dragToClose: true,
-      animationBuilder: (
-        context,
-        animation,
-        alignment,
-        child,
-      ) {
-        return FadeTransition(
-          opacity: animation,
-          child: child,
-        );
+      animationBuilder: (context, animation, alignment, child) {
+        return FadeTransition(opacity: animation, child: child);
       },
     );
   }

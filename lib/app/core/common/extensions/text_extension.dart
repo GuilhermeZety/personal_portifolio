@@ -9,11 +9,7 @@ extension Gradient on Widget {
 extension GradientSpan on TextSpan {}
 
 class GradientText extends StatelessWidget {
-  const GradientText(
-    this.child, {
-    super.key,
-    required this.gradient,
-  });
+  const GradientText(this.child, {super.key, required this.gradient});
 
   final Widget child;
   final LinearGradient gradient;
@@ -22,9 +18,9 @@ class GradientText extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShaderMask(
       blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
+      shaderCallback:
+          (bounds) =>
+              gradient.createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
       child: child,
     );
   }

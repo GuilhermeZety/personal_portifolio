@@ -9,9 +9,7 @@ import 'package:personal_portifolio/app/core/shared/models/translated_string.dar
 class ContentModel extends Equatable {
   final String uuid;
 
-  const ContentModel({
-    required this.uuid,
-  });
+  const ContentModel({required this.uuid});
 
   factory ContentModel.fromMap(Map<String, dynamic> map) {
     log(map['type'].toString());
@@ -22,17 +20,14 @@ class ContentModel extends Equatable {
       return ContactContentModel.fromMap(map);
     }
 
-    return ContentModel(
-      uuid: map['uid'] ?? 'uuid',
-    );
+    return ContentModel(uuid: map['uid'] ?? 'uuid');
   }
 
-  factory ContentModel.fromJson(String source) => ContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ContentModel.fromJson(String source) =>
+      ContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  List<Object?> get props => [
-        uuid,
-      ];
+  List<Object?> get props => [uuid];
 }
 
 class AboutMeContentModel extends ContentModel {
@@ -97,7 +92,8 @@ class AboutMeContentModel extends ContentModel {
     );
   }
 
-  factory AboutMeContentModel.fromJson(String source) => AboutMeContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AboutMeContentModel.fromJson(String source) =>
+      AboutMeContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   List<String?> get props => [uuid, image, curriculumLink, emailLink];

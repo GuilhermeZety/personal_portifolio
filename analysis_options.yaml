@@ -9,4 +9,8 @@ linter:
     cancel_subscriptions: true
     annotate_overrides: true
     empty_constructor_bodies: true
-    require_trailing_commas: true
+    require_trailing_commas: false
+formatter:
+  page_width: 90
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options

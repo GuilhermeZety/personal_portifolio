@@ -48,10 +48,7 @@ class _FooterSectionState extends State<ContactSection> {
   Widget _buildTitle() {
     return Column(
       children: [
-        Text(
-          'contact'.t,
-          style: context.textTheme.titleLarge,
-        ),
+        Text('contact'.t, style: context.textTheme.titleLarge),
         const Gap(20),
         Container(
           width: 60,
@@ -75,17 +72,18 @@ class _FooterSectionState extends State<ContactSection> {
         alignment: WrapAlignment.spaceEvenly,
         spacing: 12,
         runSpacing: 12,
-        children: contact.items
-            .map(
-              (e) => ContactItem(
-                svg: e.icon,
-                text: e.title,
-                link: e.link,
-                description: e.description,
-                color: e.color,
-              ),
-            )
-            .toList(),
+        children:
+            contact.items
+                .map(
+                  (e) => ContactItem(
+                    svg: e.icon,
+                    text: e.title,
+                    link: e.link,
+                    description: e.description,
+                    color: e.color,
+                  ),
+                )
+                .toList(),
       ),
     ).pH(24);
   }
@@ -128,15 +126,13 @@ class _ContactItemState extends State<ContactItem> with SingleTickerProviderStat
     _colorAnimation = ColorTween(
       begin: widget.color,
       end: Colors.white,
-    ).animate(_controller)
-      ..addListener(() {
-        setState(() {
-          _colorFilter = ColorFilter.mode(
-            _colorAnimation.value!, // Use the animated color
-            BlendMode.srcIn, // Adjust the blend mode as needed (srcIn is common for coloring)
-          );
-        });
-      });
+    ).animate(_controller)..addListener(() {
+      _colorFilter = ColorFilter.mode(
+        _colorAnimation.value!, // Use the animated color
+        BlendMode.srcIn, // Adjust the blend mode as needed (srcIn is common for coloring)
+      );
+      if (mounted) setState(() {});
+    });
     super.initState();
   }
 
@@ -166,10 +162,7 @@ class _ContactItemState extends State<ContactItem> with SingleTickerProviderStat
             duration: 100.ms,
             decoration: BoxDecoration(
               color: hooved ? widget.color : Colors.transparent,
-              border: Border.all(
-                color: widget.color,
-                width: 1,
-              ),
+              border: Border.all(color: widget.color, width: 1),
               borderRadius: BorderRadius.circular(1000),
             ),
             padding: const EdgeInsets.all(12),
@@ -184,15 +177,9 @@ class _ContactItemState extends State<ContactItem> with SingleTickerProviderStat
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                widget.text,
-                style: context.textTheme.titleMedium,
-              ),
+              Text(widget.text, style: context.textTheme.titleMedium),
               if (widget.description != null)
-                Text(
-                  widget.description!,
-                  style: context.textTheme.titleSmall,
-                ),
+                Text(widget.description!, style: context.textTheme.titleSmall),
             ],
           ),
         ],

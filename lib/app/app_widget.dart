@@ -30,7 +30,8 @@ class _AppWidgetState extends State<AppWidget> {
     LocalJsonLocalization.delegate.directories = [translationsPath];
 
     return ThemeProvider(
-      initTheme: AppTheme().themeMode.value == ThemeMode.dark ? AppTheme.dark : AppTheme.light,
+      initTheme:
+          AppTheme().themeMode.value == ThemeMode.dark ? AppTheme.dark : AppTheme.light,
       builder: (context, myTheme) {
         return MaterialApp(
           title: 'Portifolio | Guilherme Martins',
@@ -40,7 +41,9 @@ class _AppWidgetState extends State<AppWidget> {
             GlobalCupertinoLocalizations.delegate,
             LocalJsonLocalization.delegate,
           ],
-          supportedLocales: LocalizationSession().suportedLocales.map((e) => Locale(e.$1, e.$2)),
+          supportedLocales: LocalizationSession().suportedLocales.map(
+            (e) => Locale(e.$1, e.$2),
+          ),
           locale: LocalizationSession().locale.watch(context),
           theme: myTheme,
           debugShowCheckedModeBanner: false,

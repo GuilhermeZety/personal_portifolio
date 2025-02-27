@@ -24,7 +24,9 @@ class _SplashPageState extends State<SplashPage> {
       await SessionMemory().load();
       await PrismicMemory().load();
       Future.delayed(1.5.seconds, () {
-        Navigator.of(context).pushAndRemoveUntil(FadePageRoute(const HomePage()), (_) => false);
+        Navigator.of(
+          context,
+        ).pushAndRemoveUntil(FadePageRoute(const HomePage()), (_) => false);
       });
     });
   }
@@ -36,9 +38,7 @@ class _SplashPageState extends State<SplashPage> {
         child: SizedBox(
           width: 200,
           height: 200,
-          child: Image.asset(
-            AppAssets.gifs.spinningCat,
-          ).hero('spinningCat'),
+          child: Image.asset(AppAssets.gifs.spinningCat).hero('spinningCat'),
         ).animate().fade(delay: 500.ms),
       ),
     );

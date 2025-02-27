@@ -37,7 +37,10 @@ class PrismicService {
         if (cachedRef == ref) {
           var prismicData = prefs.getStringList('prismic-data');
 
-          if (prismicData != null && prismicData.isNotEmpty) return prismicData.map<ContentModel>((e) => ContentModel.fromJson(e)).toList();
+          if (prismicData != null && prismicData.isNotEmpty)
+            return prismicData
+                .map<ContentModel>((e) => ContentModel.fromJson(e))
+                .toList();
         }
       }
 
@@ -47,10 +50,17 @@ class PrismicService {
 
       await (
         prefs.setString('prismic-ref', ref),
-        prefs.setStringList('prismic-data', List<Map<String, dynamic>>.from(response.data['results']).map<String>((e) => jsonEncode(e)).toList()),
+        prefs.setStringList(
+          'prismic-data',
+          List<Map<String, dynamic>>.from(
+            response.data['results'],
+          ).map<String>((e) => jsonEncode(e)).toList(),
+        ),
       ).wait;
 
-      return response.data['results'].map<ContentModel>((e) => ContentModel.fromMap(e)).toList();
+      return response.data['results']
+          .map<ContentModel>((e) => ContentModel.fromMap(e))
+          .toList();
     } catch (err) {
       rethrow;
     }

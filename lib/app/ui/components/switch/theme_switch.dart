@@ -37,53 +37,57 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
   @override
   Widget build(BuildContext context) {
     return ThemeSwitcher.switcher(
-      builder: (context, switcher) => IconButton(
-        onPressed: () async {
-          var newTheme = themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
-          switcher.changeTheme(
-            theme: newTheme == ThemeMode.light ? AppTheme.light : AppTheme.dark,
-          );
-          await AppTheme().changeThemeMode(newTheme);
-        },
-        icon: Container(
-          alignment: Alignment.center,
-          height: height,
-          width: width,
-          decoration: BoxDecoration(
-            color: context.colorScheme.secondaryContainer,
-            borderRadius: BorderRadius.circular(100),
-            border: Border.all(color: context.colorScheme.tertiaryContainer),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: (width / 2) - 4,
-                height: (width / 2) - 4,
-                margin: EdgeInsets.only(left: themeMode == ThemeMode.dark ? 2 : width / 2),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      if (themeMode == ThemeMode.light) ...[
-                        const Color(0xFFFFD8A5),
-                        const Color(0xFFE3A049),
-                      ] else ...[
-                        const Color(0xFF262674),
-                        const Color(0xFF6D45F5),
-                      ],
-                    ],
-                  ),
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Icon(
-                  themeMode == ThemeMode.light ? Icons.sunny : Icons.dark_mode,
-                  color: AppColors.white,
-                  size: (height - 10),
-                ),
+      builder:
+          (context, switcher) => IconButton(
+            onPressed: () async {
+              var newTheme =
+                  themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+              switcher.changeTheme(
+                theme: newTheme == ThemeMode.light ? AppTheme.light : AppTheme.dark,
+              );
+              await AppTheme().changeThemeMode(newTheme);
+            },
+            icon: Container(
+              alignment: Alignment.center,
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
+                color: context.colorScheme.secondaryContainer,
+                borderRadius: BorderRadius.circular(100),
+                border: Border.all(color: context.colorScheme.tertiaryContainer),
               ),
-            ],
+              child: Row(
+                children: [
+                  Container(
+                    width: (width / 2) - 4,
+                    height: (width / 2) - 4,
+                    margin: EdgeInsets.only(
+                      left: themeMode == ThemeMode.dark ? 2 : width / 2,
+                    ),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          if (themeMode == ThemeMode.light) ...[
+                            const Color(0xFFFFD8A5),
+                            const Color(0xFFE3A049),
+                          ] else ...[
+                            const Color(0xFF262674),
+                            const Color(0xFF6D45F5),
+                          ],
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Icon(
+                      themeMode == ThemeMode.light ? Icons.sunny : Icons.dark_mode,
+                      color: AppColors.white,
+                      size: (height - 10),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
-      ),
     );
   }
 }

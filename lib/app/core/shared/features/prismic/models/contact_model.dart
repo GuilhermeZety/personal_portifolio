@@ -8,41 +8,32 @@ import 'package:personal_portifolio/app/core/shared/features/prismic/models/cont
 class ContactContentModel extends ContentModel {
   final List<ContactItemContentModel> items;
 
-  const ContactContentModel({
-    required super.uuid,
-    required this.items,
-  });
+  const ContactContentModel({required super.uuid, required this.items});
 
-  ContactContentModel copyWith({
-    String? uuid,
-    List<ContactItemContentModel>? items,
-  }) {
-    return ContactContentModel(
-      uuid: uuid ?? this.uuid,
-      items: items ?? this.items,
-    );
+  ContactContentModel copyWith({String? uuid, List<ContactItemContentModel>? items}) {
+    return ContactContentModel(uuid: uuid ?? this.uuid, items: items ?? this.items);
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': items.map((x) => x.toMap()).toList(),
-    };
+    return <String, dynamic>{'items': items.map((x) => x.toMap()).toList()};
   }
 
   factory ContactContentModel.fromMap(Map<String, dynamic> map) {
     return ContactContentModel(
-      items: map['data']['contact_itens']
-          .map<ContactItemContentModel>(
-            (x) => ContactItemContentModel.fromMap(x as Map<String, dynamic>),
-          )
-          .toList(),
+      items:
+          map['data']['contact_itens']
+              .map<ContactItemContentModel>(
+                (x) => ContactItemContentModel.fromMap(x as Map<String, dynamic>),
+              )
+              .toList(),
       uuid: map['uuid'] ?? 'uuid',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ContactContentModel.fromJson(String source) => ContactContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ContactContentModel.fromJson(String source) =>
+      ContactContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() => 'ContactContentModel(items: $items)';
@@ -103,7 +94,8 @@ class ContactItemContentModel extends Equatable {
 
   String toJson() => json.encode(toMap());
 
-  factory ContactItemContentModel.fromJson(String source) => ContactItemContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ContactItemContentModel.fromJson(String source) =>
+      ContactItemContentModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   bool get stringify => true;

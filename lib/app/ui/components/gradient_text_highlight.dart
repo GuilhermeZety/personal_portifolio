@@ -16,11 +16,7 @@ class GradientTextHighlight extends StatelessWidget {
   Widget build(BuildContext context) {
     final textSpans = _buildTextSpans();
 
-    return Text.rich(
-      TextSpan(
-        children: textSpans,
-      ),
-    );
+    return Text.rich(TextSpan(children: textSpans));
   }
 
   List<InlineSpan> _buildTextSpans() {
@@ -30,11 +26,7 @@ class GradientTextHighlight extends StatelessWidget {
     for (var span in spans) {
       if (span.$1 > currentIndex) {
         // Parte não destacada
-        textSpans.add(
-          TextSpan(
-            text: text.substring(currentIndex, span.$1),
-          ),
-        );
+        textSpans.add(TextSpan(text: text.substring(currentIndex, span.$1)));
       }
 
       // Parte destacada com gradient
@@ -59,11 +51,7 @@ class GradientTextHighlight extends StatelessWidget {
 
     // Adiciona o texto restante, se houver
     if (currentIndex < text.length) {
-      textSpans.add(
-        TextSpan(
-          text: text.substring(currentIndex),
-        ),
-      );
+      textSpans.add(TextSpan(text: text.substring(currentIndex)));
     }
 
     return textSpans;

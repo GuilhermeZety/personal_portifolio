@@ -11,13 +11,7 @@ class SessionMemory {
   //
 
   Future load() async {
-    var [
-      brazil,
-      unitedStates,
-      spain,
-      mouse,
-      particle,
-    ] = await Future.wait([
+    var [brazil, unitedStates, spain, mouse, particle] = await Future.wait([
       Utils.getAssetsBytes(AppAssets.svgs.brazil),
       Utils.getAssetsBytes(AppAssets.svgs.unitedStates),
       Utils.getAssetsBytes(AppAssets.svgs.spain),

@@ -57,21 +57,20 @@ class _CustomAppBarState extends State<CustomAppBar> {
         child: MouseRegion(
           cursor: SystemMouseCursors.click,
           child: Text(
-            'Guilherme Martins',
-            style: TextStyle(fontSize: context.isMobile ? 14 : 18, letterSpacing: 0.3),
-          ).gradient(AppColors.gradient).pLeft(context.pageMargin).slideFade(
-                false,
-                delay: 200.ms,
-                active: mainAnimation,
-              ),
+                'Guilherme Martins',
+                style: TextStyle(
+                  fontSize: context.isMobile ? 14 : 18,
+                  letterSpacing: 0.3,
+                ),
+              )
+              .gradient(AppColors.gradient)
+              .pLeft(context.pageMargin)
+              .slideFade(false, delay: 200.ms, active: mainAnimation),
         ),
       ),
       bottom: PreferredSize(
         preferredSize: const Size(double.infinity, 1),
-        child: Container(
-          color: context.colorScheme.tertiaryContainer,
-          height: 1,
-        ),
+        child: Container(color: context.colorScheme.tertiaryContainer, height: 1),
       ),
       centerTitle: false,
       pinned: true,
@@ -108,7 +107,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
           width: 64,
           child: Row(
             children: [
-              const LanguageSwitch().slideFade(false, delay: 500.ms, active: mainAnimation),
+              const LanguageSwitch().slideFade(
+                false,
+                delay: 500.ms,
+                active: mainAnimation,
+              ),
             ],
           ),
         ),
@@ -117,9 +120,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             onPressed: () {
               Scaffold.of(context).openEndDrawer();
             },
-            icon: const Icon(
-              Icons.menu_rounded,
-            ),
+            icon: const Icon(Icons.menu_rounded),
           ),
         Gap(context.pageMargin),
       ],
@@ -128,7 +129,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
 }
 
 class AppBarItem extends StatefulWidget {
-  const AppBarItem({super.key, required this.title, required this.currentKey, required this.animationDelay});
+  const AppBarItem({
+    super.key,
+    required this.title,
+    required this.currentKey,
+    required this.animationDelay,
+  });
   final String title;
   final GlobalKey currentKey;
   final Duration animationDelay;
@@ -161,22 +167,21 @@ class _AppBarItemState extends State<AppBarItem> with SignalsMixin {
                   fontWeight: AppFonts.medium,
                   letterSpacing: 0.5,
                   fontSize: 16,
-                  color: context.textTheme.titleLarge?.color?.changeOpacity(hooved.watch(context) ? 1 : 0.6),
+                  color: context.textTheme.titleLarge?.color?.changeOpacity(
+                    hooved.watch(context) ? 1 : 0.6,
+                  ),
                 ),
-                child: Text(
-                  widget.title,
-                ),
-              ).slideFade(
-                false,
-                delay: widget.animationDelay,
-                active: mainAnimation,
-              ),
+                child: Text(widget.title),
+              ).slideFade(false, delay: widget.animationDelay, active: mainAnimation),
               AnimatedContainer(
                 duration: 100.ms,
                 height: 3,
                 decoration: const BoxDecoration(
                   color: AppColors.primary,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
                 ),
                 width: hooved.watch(context) ? 30 : 0,
               ),

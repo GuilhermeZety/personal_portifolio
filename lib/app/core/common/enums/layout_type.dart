@@ -1,6 +1,1 @@
-enum LayoutTypes{
-  mobile,
-  tablet,
-  desktop,
-  largeDesktop;
-}
+enum LayoutTypes { mobile, tablet, desktop, largeDesktop }

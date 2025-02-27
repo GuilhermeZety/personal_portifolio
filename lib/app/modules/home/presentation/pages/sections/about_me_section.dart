@@ -56,11 +56,7 @@ class _AboutMeSectionState extends State<AboutMeSection> {
                     child: Center(
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(1000),
-                        child: Image.network(
-                          content!.image,
-                          width: 200,
-                          height: 200,
-                        ),
+                        child: Image.network(content!.image, width: 200, height: 200),
                       ),
                     ),
                   ),
@@ -76,68 +72,58 @@ class _AboutMeSectionState extends State<AboutMeSection> {
   }
 
   Widget get _buildAboutMe => Container(
-        constraints: BoxConstraints(
-          maxWidth: contentMaxWidth - 408,
-          minWidth: 300,
-        ),
-        width: context.width - (context.width < 640 ? 0 : 408),
-        child: SelectionArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    constraints: BoxConstraints(maxWidth: contentMaxWidth - 408, minWidth: 300),
+    width: context.width - (context.width < 640 ? 0 : 408),
+    child: SelectionArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(content!.title.translated(context), style: context.textTheme.titleLarge),
+          const Gap(16),
+          Text(
+            content!.subtitle.translated(context),
+            style: context.textTheme.titleMedium,
+          ),
+          const Gap(16),
+          GradientTextHighlight(
+            text: content!.description.translated(context),
+            spans: content!.description.translatedHighlight(context),
+            gradient: AppColors.gradient,
+          ),
+          const Gap(40),
+          Row(
             children: [
-              Text(
-                content!.title.translated(context),
-                style: context.textTheme.titleLarge,
+              Button(
+                backgroundColor: context.colorScheme.tertiaryContainer,
+                onPressed: () async {
+                  launchUrl(Uri.parse(content!.curriculumLink));
+                },
+                child: Row(
+                  children: [
+                    const Icon(Icons.download, color: AppColors.primary).pTop(2),
+                    const Gap(8),
+                    const Text('Curriculo', style: TextStyle(color: AppColors.primary)),
+                  ],
+                ),
               ),
-              const Gap(16),
-              Text(
-                content!.subtitle.translated(context),
-                style: context.textTheme.titleMedium,
-              ),
-              const Gap(16),
-              GradientTextHighlight(
-                text: content!.description.translated(context),
-                spans: content!.description.translatedHighlight(context),
-                gradient: AppColors.gradient,
-              ),
-              const Gap(40),
-              Row(
-                children: [
-                  Button(
-                    backgroundColor: context.colorScheme.tertiaryContainer,
-                    onPressed: () async {
-                      launchUrl(
-                        Uri.parse(content!.curriculumLink),
-                      );
-                    },
-                    child: Row(
-                      children: [
-                        const Icon(Icons.download, color: AppColors.primary).pTop(2),
-                        const Gap(8),
-                        const Text('Curriculo', style: TextStyle(color: AppColors.primary)),
-                      ],
-                    ),
-                  ),
-                  const Gap(8),
-                  Button(
-                    backgroundColor: context.colorScheme.tertiaryContainer,
-                    onPressed: () async {
-                      launchUrl(
-                        Uri.parse(content!.emailLink),
-                      );
-                    },
-                    child: Row(
-                      children: [
-                        const Icon(Icons.email_outlined, color: AppColors.secondary).pTop(2),
-                        const Gap(8),
-                        const Text('Email', style: TextStyle(color: AppColors.secondary)),
-                      ],
-                    ),
-                  ),
-                ],
+              const Gap(8),
+              Button(
+                backgroundColor: context.colorScheme.tertiaryContainer,
+                onPressed: () async {
+                  launchUrl(Uri.parse(content!.emailLink));
+                },
+                child: Row(
+                  children: [
+                    const Icon(Icons.email_outlined, color: AppColors.secondary).pTop(2),
+                    const Gap(8),
+                    const Text('Email', style: TextStyle(color: AppColors.secondary)),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }

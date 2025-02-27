@@ -38,11 +38,7 @@ class AppColors {
   static const Color yellow_500 = Color(0xFFE3A049);
 
   static const LinearGradient gradient = LinearGradient(
-    colors: [
-      Color(0xFF6D45F5),
-      Color(0xFFE76875),
-      Color(0xFFC3802A),
-    ],
+    colors: [Color(0xFF6D45F5), Color(0xFFE76875), Color(0xFFC3802A)],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );

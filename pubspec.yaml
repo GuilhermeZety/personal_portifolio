@@ -1,10 +1,11 @@
 name: personal_portifolio
 description: "A new Flutter project."
 publish_to: 'none'
-version: 0.1.1+2
+version: 0.1.2+3
 
 environment:
-  sdk: '>=3.6.1 <4.0.0'
+  # Flutter 3.29
+  sdk: '>=3.7.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -18,15 +19,16 @@ dependencies:
   loading_animation_widget: ^1.3.0
   localization: ^2.1.1
   signals: ^6.0.2
-  toastification: ^2.3.0
-  shared_preferences: ^2.3.2
+  toastification: ^3.0.1
+  shared_preferences: ^2.5.2
   gif: ^2.3.0
   url_strategy: ^0.3.0
   flutter_svg: ^2.0.17
   auto_size_text: ^3.0.0
-  dio: ^5.7.0
+  dio: ^5.8.0+1
   equatable: ^2.0.7
   url_launcher: ^6.3.1
+  
   lottie: ^3.3.1
   
 dev_dependencies:

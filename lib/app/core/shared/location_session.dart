@@ -15,7 +15,8 @@ class LocalizationSession {
   void init() {
     locale = signal(
       Locale(
-        CurrentSession().prefs.getString('localization') ?? PlatformDispatcher.instance.locale.languageCode,
+        CurrentSession().prefs.getString('localization') ??
+            PlatformDispatcher.instance.locale.languageCode,
       ),
       debugLabel: 'LOCALIZATION',
     );
@@ -39,6 +40,9 @@ class LocalizationSession {
         locale.value = const Locale('pt', 'BR');
         break;
     }
-    CurrentSession().prefs.setString('localization', locale.value.languageCode.substring(0, 2));
+    CurrentSession().prefs.setString(
+      'localization',
+      locale.value.languageCode.substring(0, 2),
+    );
   }
 }

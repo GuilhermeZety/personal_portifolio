@@ -42,10 +42,7 @@ class _ApresentationSectionState extends State<ApresentationSection> {
                 alignment: MainAxisAlignment.spaceBetween,
                 overflowAlignment: OverflowBarAlignment.center,
                 overflowSpacing: 24,
-                children: [
-                  _buildApresentation(),
-                  _getSpinningCat,
-                ],
+                children: [_buildApresentation(), _getSpinningCat],
               ).pH(context.pageMargin).pBottom(32),
             ),
             Positioned(
@@ -75,63 +72,61 @@ class _ApresentationSectionState extends State<ApresentationSection> {
   }
 
   Widget get _getSpinningCat => Image.asset(
-        AppAssets.gifs.spinningCat,
-        width: context.width < 696 ? 250 : 300,
-        height: context.width < 696 ? 250 : 300,
-      ).hero('spinningCat');
+    AppAssets.gifs.spinningCat,
+    width: context.width < 696 ? 250 : 300,
+    height: context.width < 696 ? 250 : 300,
+  ).hero('spinningCat');
 
   Widget gesture() {
     return (context.isDesktop
             ? SvgPicture.memory(
-                SessionMemory().mouseSVG,
-                height: 18,
-                colorFilter: const ColorFilter.mode(AppColors.blue_700, BlendMode.srcIn),
-              )
+              SessionMemory().mouseSVG,
+              height: 18,
+              colorFilter: const ColorFilter.mode(AppColors.blue_700, BlendMode.srcIn),
+            )
             : Container(
-                decoration: BoxDecoration(
-                  color: context.colorScheme.tertiaryContainer.changeOpacity(0.6),
-                  shape: BoxShape.circle,
-                ),
-                width: 20,
-                height: 20,
-              ))
-        .animate(
-          onComplete: (controller) => controller.repeat(reverse: true),
-        )
-        .slideY(
-          duration: 1.seconds,
-          begin: -0.1,
-          end: 0.1,
-        );
+              decoration: BoxDecoration(
+                color: context.colorScheme.tertiaryContainer.changeOpacity(0.6),
+                shape: BoxShape.circle,
+              ),
+              width: 20,
+              height: 20,
+            ))
+        .animate(onComplete: (controller) => controller.repeat(reverse: true))
+        .slideY(duration: 1.seconds, begin: -0.1, end: 0.1);
   }
 
   Widget _buildApresentation() {
     return SelectionArea(
-      child: Column(
-        crossAxisAlignment: context.width < 746 ? CrossAxisAlignment.center : CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'hello'.t,
-            style: TextStyle(
-              fontSize: 36,
-              fontWeight: AppFonts.normal,
-              color: context.textTheme.displaySmall?.color,
-            ),
-          ),
-          const AnimatedName(),
-          AutoSizeText(
-            'developer'.t,
-            style: TextStyle(
-              fontSize: 36,
-              fontWeight: AppFonts.normal,
-              color: context.textTheme.displaySmall?.color,
-            ),
-            maxLines: 2,
-            textAlign: TextAlign.center,
-          ),
-        ],
-      ).shim(),
+      child:
+          Column(
+            crossAxisAlignment:
+                context.width < 746
+                    ? CrossAxisAlignment.center
+                    : CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'hello'.t,
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: AppFonts.normal,
+                  color: context.textTheme.displaySmall?.color,
+                ),
+              ),
+              const AnimatedName(),
+              AutoSizeText(
+                'developer'.t,
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: AppFonts.normal,
+                  color: context.textTheme.displaySmall?.color,
+                ),
+                maxLines: 2,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ).shim(),
     );
   }
 }
@@ -181,10 +176,7 @@ class _AnimatedNameState extends State<AnimatedName> {
           Flexible(
             child: AutoSizeText(
               name.substring(0, show.value),
-              style: TextStyle(
-                fontSize: fontSize,
-                fontWeight: AppFonts.bold,
-              ),
+              style: TextStyle(fontSize: fontSize, fontWeight: AppFonts.bold),
               maxLines: 1,
             ).gradient(AppColors.gradient),
           ),
@@ -193,11 +185,11 @@ class _AnimatedNameState extends State<AnimatedName> {
             style: TextStyle(
               fontWeight: AppFonts.medium,
               fontSize: fontSize,
-              color: context.textTheme.titleLarge?.color?.changeOpacity(showBar.value ? 1 : 0),
+              color: context.textTheme.titleLarge?.color?.changeOpacity(
+                showBar.value ? 1 : 0,
+              ),
             ),
-            child: const Text(
-              '|',
-            ),
+            child: const Text('|'),
           ),
         ],
       ),

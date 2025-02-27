@@ -49,16 +49,17 @@ class Panel extends StatelessWidget {
         decoration: BoxDecoration(
           border: border,
           borderRadius: radius ?? BorderRadius.circular(10),
-          boxShadow: withShadow
-              ? [
-                  BoxShadow(
-                    color: AppColors.black.changeOpacity(0.06),
-                    spreadRadius: 0,
-                    blurRadius: 5,
-                    offset: const Offset(0, 1), // changes position of shadow
-                  ),
-                ]
-              : [],
+          boxShadow:
+              withShadow
+                  ? [
+                    BoxShadow(
+                      color: AppColors.black.changeOpacity(0.06),
+                      spreadRadius: 0,
+                      blurRadius: 5,
+                      offset: const Offset(0, 1), // changes position of shadow
+                    ),
+                  ]
+                  : [],
         ),
         child: Material(
           color: color ?? context.colorScheme.secondaryContainer,
@@ -72,10 +73,7 @@ class Panel extends StatelessWidget {
             overlayColor: WidgetStateProperty.all<Color>(
               splashColor ?? AppColors.grey_100.changeOpacity(0.5),
             ),
-            child: Padding(
-              padding: padding,
-              child: child,
-            ),
+            child: Padding(padding: padding, child: child),
           ),
         ),
       ),

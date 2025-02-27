@@ -7,11 +7,7 @@ extension Gradient on Text {
 }
 
 class GradientText extends StatelessWidget {
-  const GradientText(
-    this.text, {
-    super.key,
-    required this.gradient,
-  });
+  const GradientText(this.text, {super.key, required this.gradient});
 
   final Text text;
   final LinearGradient gradient;
@@ -20,9 +16,9 @@ class GradientText extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShaderMask(
       blendMode: BlendMode.srcIn,
-      shaderCallback: (bounds) => gradient.createShader(
-        Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-      ),
+      shaderCallback:
+          (bounds) =>
+              gradient.createShader(Rect.fromLTWH(0, 0, bounds.width, bounds.height)),
       child: text,
     );
   }
