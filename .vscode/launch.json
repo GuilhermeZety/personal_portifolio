@@ -4,10 +4,17 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
         {
-            "name": "personal_portifolio",
+            "name": "web (hotreload)",
+            "type": "dart",
             "request": "launch",
-            "type": "dart"
+            "program": "lib/main.dart",
+            "args": [
+              "-d",
+              "chrome",
+              "--web-experimental-hot-reload",
+            ]
         },
         {
             "name": "personal_portifolio (profile mode)",
